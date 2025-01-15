@@ -1,0 +1,23 @@
+<!--This XML file contains the gestures of the database.-->
+<Gestures>
+  <Gesture>
+    <ID>0</ID>
+    <NAME>go_back</NAME>
+    <SEMANTIC>goback</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>1</ID>
+    <NAME>main_page</NAME>
+    <SEMANTIC>mainpage</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>2</ID>
+    <NAME>scroll_down</NAME>
+    <SEMANTIC>scrolldown</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>3</ID>
+    <NAME>scroll_up</NAME>
+    <SEMANTIC>scrollup</SEMANTIC>
+  </Gesture>
+</Gestures>

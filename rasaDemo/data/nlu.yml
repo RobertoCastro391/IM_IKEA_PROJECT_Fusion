@@ -1,0 +1,259 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_help
+    examples: |
+      - Podes-me ajudar?
+      - Preciso de ajuda
+      - Como faço isso?
+      - Não sei como fazer isso
+      - Tens alguma sugestão?
+
+  - intent: show_products
+    examples: |
+      - Quero ver [cadeiras](category)
+      - Mostra-me [mesas](category)
+      - Exibe [sofás](category)
+      - Preciso de [cadeiras](category)
+      - Tem [mesas](category) disponíveis?
+      - Procuro por [sofás](category)
+      - Procura por [sofás](category)
+      - Pode mostrar-me as [cadeiras](category) disponíveis, por favor?
+      - Gostava de saber se têm [mesas](category) em stock.
+      - Por favor, mostre-me os [sofás](category) que têm disponíveis.
+      - Pode verificar se há [cadeiras](category) em stock, por favor?
+      - Queria ver os modelos de [mesas](category) disponíveis para compra.
+      - Procuro [sofás](category), pode mostrar-me o que têm, por favor?
+      - Tem [cadeiras](category) que possam ser entregues rapidamente?
+      - Estou interessado em ver as [mesas](category) disponíveis, pode ajudar-me?
+      - Preciso de saber se têm [sofás](category) em stock no momento.
+      - Por favor, mostra os produtos da categoria [cadeiras](category).
+      - Pode confirmar se há [mesas](category) disponíveis para entrega?
+      - Queria ver todos os [sofás](category) que estão disponíveis para venda.
+      - Gostava de verificar o stock de [cadeiras](category), pode ajudar-me?
+      - Por favor, mostre-me os produtos de [mesas](category) que estão em stock.
+      - Preciso de ver as opções de [sofás](category), pode mostrar-me?
+      - Pode exibir os modelos de [cadeiras](category) que têm atualmente, por favor?
+      - Gostava de saber quais [mesas](category) estão disponíveis.
+      - Tem como verificar se há [sofás](category) disponíveis no momento?
+      - Quero ver os modelos de [prateleiras](category) disponíveis.
+      - Pode ajudar-me a encontrar [secretárias](category) para escritório, por favor?
+      - Gostava de saber se têm [poltronas](category) disponíveis.
+      - Estou interessado em ver as opções de [bancos altos](category) que têm em stock.
+      - Preciso de verificar se há [móveis de TV](category) disponíveis para entrega.
+      - Queria explorar os produtos de [camas](category) que têm disponíveis.
+      - Por favor, mostre-me as [estantes](category) que posso adquirir.
+      - Tem [armários](category) para compra imediata?
+      - Gostava de ver as opções de [aparadores](category) no catálogo.
+      - Pode mostrar-me se há [móveis de entrada](category) disponíveis no momento?
+      - Preciso de saber se há [cómodas](category) em stock.
+      - Podes verificar as [mesas de cabeceira](category) disponíveis?
+
+  - intent: open_website
+    examples: |
+      - Vamos às compras
+      - Abre o IKEA
+      - Mostre-me o site
+      - Quero aceder a página
+      - Abre o catálogo da IKEA
+      - Mostre-me o catálogo
+      - Vamos às compras(https://www.ikea.com/pt/pt/)
+
+  - intent: scroll_up
+    examples: |
+      - Suba
+      - Quero subir
+      - Vá para cima
+      - Rola para cima
+      - Suba para cima
+      - Sobe a página
+      - Cima
+      - Sobe para cima
+      - Suba para cima
+      - Sobe
+
+  - intent: scroll_down
+    examples: |
+      - Desça
+      - Quero descer
+      - Vá para baixo
+      - Rola para baixo
+      - Desce a página
+      - Desce
+      - Desce para baixo
+      - Desça apra baixo
+
+
+  - intent: select_product_by_position
+    examples: |
+      - Quero o produto número [1](position)
+      - Escolha o produto número [2](position)
+      - Mostre os detalhes do produto na posição [3](position)
+      - Eu quero o item número [4](position)
+      - Selecione o item [5](position), por favor
+      - Detalhes do produto [6](position)
+      - Produto número [7](position), por favor
+
+  - intent: add_to_cart
+    examples: |
+      - Adiciona o produto ao carrinho.
+      - Adiciona-o ao carrinho.
+      - Podes adicioná-lo ao carrinho.
+      - Coloca o primeiro produto no carrinho.
+      - Adiciona-me este produto ao carrinho.
+      - Gostaria de adicionar este item ao carrinho.
+      - Adicione ao carrinho, por favor.
+      - Quero este produto no carrinho.
+      - Por favor, coloca isso no carrinho.
+      - Adicione ao carrinho o produto número [1](position).
+
+
+  - intent: add_to_favorites
+    examples: |
+      - Adiciona o produto aos favoritos.
+      - Adiciona-o aos favoritos.
+      - Podes adicioná-lo à lista de favoritos.
+      - Coloca o primeiro produto nos favoritos.
+      - Adiciona-me este produto aos favoritos.
+      - Gostaria de adicionar este item aos favoritos.
+      - Adicione aos favoritos, por favor.
+      - Quero este produto na lista de favoritos.
+      - Por favor, coloca isso nos favoritos.
+      - Adicione aos favoritos o produto número [1](position).
+
+  - intent: show_cart
+    examples: |
+      - Mostrar-me o carrinho.
+      - Quero ver o que tenho no meu carrinho.
+      - Abre o carrinho.
+      - Mostra o carrinho, por favor.
+      - Gostaria de verificar o carrinho.
+      - Pode abrir o meu carrinho?
+      - Quero ver os itens no meu carrinho.
+      - Por favor, exiba o carrinho.
+      - Mostre o carrinho de compras.
+
+  - intent: show_favorites
+    examples: |
+      - Mostrar-me os favoritos.
+      - Quero ver o que tenho nos favoritos.
+      - Abre os favoritos.
+      - Mostra os favoritos, por favor.
+      - Gostaria de verificar os favoritos.
+      - Pode abrir a lista de favoritos?
+      - Quero ver os itens nos meus favoritos.
+      - Por favor, exiba os favoritos.
+      - Mostre a minha lista de favoritos.
+
+  - intent: remove_favorites
+    examples: |
+      - Quero remover dos favotiros o produto número [1](position)
+      - Remove o produto número [2](position) dos favoritos
+      - Elimina o produto na posição [3](position) dos favoritos
+      - Eu quero eliminar o item número [4](position) dos favoritos
+      - Selecione o item [5](position) e elimina dos favoritos
+      - Produto número [7](position) fora dos favoritos
+      - Remove o item [8](position) dos favoritos
+  
+  - intent: remove_cart
+    examples: |
+      - Quero remover do carrinho o produto número [1](position)
+      - Remove o produto número [2](position) do carrinho
+      - Elimina o produto na posição [3](position) do carrinho
+      - Eu quero eliminar o item número [4](position) do carrinho
+      - Selecione o item [5](position) e elimina do carrinho
+      - Produto número [7](position) fora do carrinho
+      - Remove o item [8](position) do carrinho
+  
+  - intent: go_back
+    examples: |
+      - Quero voltar a trás
+      - Anda para trás
+      - Volta para a última página
+      - Volta atrás
+      - Mostra-me a página anterior
+      - Volta para trás
+      - Preciso de ver o que estava antes
+      - Preciso de voltar atrás
+      - Anda para trás
+
+  - intent: show_more
+    examples: |
+      - Quero ver mais opções
+      - Mostra mais opções
+      - Ver mais opções
+
+  - intent: finalize_order
+    examples: |
+      - Finaliza a compra.
+      - Procede para o checkout.
+      - Já vi tudo o que tinha de ver.
+      - Por hoje, já escolhi tudo
+  
+  - intent: main_page
+    examples: |
+      - Volta à página inicial
+      - Regressa ao início
+      - Quero voltar ao início
+      - Por favor, mostra-me a página inicial
+      - Página Inicial
+
+  - intent: order_products
+    examples: |
+      - Ordena Por [A melhor correspondência](criterio), por favor.
+      - Quero ver os produtos organizados pela [melhor correspondência](criterio).
+      - Podes organizar pelos produtos com [A melhor correspondência](criterio)?
+      - Mostra os produtos do [mais baixo ao mais elevado](criterio).
+      - Ordena por [do mais baixo ao mais elevado](criterio).
+      - Quero ver em ordem [do mais baixo ao mais elevado](criterio), por favor.
+      - Podes organizar os produtos [do mais elevado ao mais baixo](criterio)?
+      - Ordena do [mais elevado ao mais baixo](criterio), por favor.
+      - Gostava de ver os produtos ordenados do [mais elevado ao mais baixo](criterio).
+      - Mostra os produtos classificados Por [Mais Recente](criterio).
+      - Ordena pelos produtos [Mais Recente](criterio), por favor.
+      - Quero ver os produtos mais novos, ordena por [Mais Recente](criterio).
+      - Podes ordenar pelos [Mais Populares](criterio)?
+      - Mostra os produtos classificados como [Mais Populares](criterio).
+      - Quero ver os produtos mais procurados, ordena pelos [Mais Populares](criterio).
+      - Ordena os produtos Por [Largura](criterio), por favor.
+      - Quero ver os produtos ordenados pela [Largura](criterio).
+      - Podes organizar os produtos pela [Largura](criterio)?
+      - Classifica os produtos pela [Altura](criterio).
+      - Preciso ver os produtos organizados por [Altura](criterio), por favor.
+      - Ordena os produtos do mais baixo para o mais alto em [Altura](criterio).
+      - Quero os produtos ordenados Por [Comprimento](criterio).
+      - Ordena os produtos pelo [Comprimento](criterio), por favor.
+      - Mostra os produtos em ordem crescente de [Comprimento](criterio).
+
+  - lookup: category
+    examples: |
+      - cadeiras
+      - cortinas
+      - mesas
+      - sofás
+      - poltronas
+      - secretárias
+      - bancos altos
+      - aparadores
+      - móveis de entrada
+      - móveis de TV
+      - mesas de centro
+      - camas
+      - roupeiros
+      - estantes
+      - prateleiras
+      - armários
+      - tapetes
+
+  - lookup: criterio
+    examples: |
+      - A melhor correspondência
+      - do mais baixo ao mais elevado
+      - do mais elevado ao mais baixo
+      - mais recente
+      - mais populares
+      - nome 
+      - largura 
+      - altura
+      - comprimento
+      - classificação de clientes
