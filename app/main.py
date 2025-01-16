@@ -21,7 +21,7 @@ not_quit = True
 intent_before = ""
 products_retrived = []
 
-intents_list = ["ask_help", "show_products", "open_website", "scroll_up", "scroll_down", "select_product_by_position", "add_to_cart", "add_to_favorites", "show_cart", "show_favorites", "remove_cart", "remove_favorites", "go_back", "show_more", "finalize_order", "main_page", "order_products"]
+intents_list = ["ASK_HELP", "SHOW_PRODUCTS", "OPEN_WEBSITE", "SCROLL_UP", "SCROLL_DOWN", "select_product_by_position", "ADD_TO_CART", "ADD_PRODUCT_FAVORITES", "SHOW_CART", "SHOW_FAVORITES", "remove_cart", "remove_favorites", "GO_BACK", "SHOW_MORE", "finalize_order", "MAIN_PAGE", "order_products"]
 
 driver = None
 
@@ -638,118 +638,175 @@ def ask_help(tts):
         print(f"Erro ao fornecer ajuda: {e}")
 
     
-# async def message_handler(message, tts):
-#     # Processa a mensagem e extrai o intent
-#     message, status = process_message(message)
+async def voice_message_handler(message, tts):
+    # Processa a mensagem e extrai o intent
     
-#     print(f"Message: {message}")
+    print(f"Message: {message}")
+
+    if message['recognized'][1]:
+        intent = message['recognized'][1]
+        print(f"Intent: {intent}")
     
-#     if message == "OK":
-#         return "OK"
-#     elif  message["intent"]["name"] in intents_list:
-#         intent = message["intent"]["name"]
-#         confidence = message["intent"]["confidence"]
-#         print(f"Intent: {intent} com confiança: {confidence}")
-#         if message["intent"]["confidence"] < 0.7:
-#             tts("Por favor repita o comando!")
 
-#         # Verifica o intent e executa a ação correspondente
-#         elif intent == "open_website":
-#             # Se o intent for "open_website", chama a função para abrir o site
-#             print("Abrindo o site...")
-#             tts("A abrir o site da IKEA PORTUGAL")
-#             open_website()
-
-#         elif intent == "show_products":
-#             # Aqui você pode adicionar lógica para mostrar produtos, etc.
-#             category = message['entities'][0]['value']
-#             print(f"Mostrando produtos de {category} ...")
-#             # Chame a função que exibe produtos aqui, por exemplo
-#             show_product(category, tts)
-
-#         elif intent == "scroll_down":
-#             # Se o intent for "scroll_up", chama a função para rolar para cima
-#             print("A descer a pagina")
-#             tts("A descer a página")
-#             scroll_down()
-
-#         elif intent == "scroll_up":
-#             # Se o intent for "scroll_up", chama a função para rolar para cima
-#             print("A subir a pagina")
-#             tts("A subir a página")
-#             scroll_up()
-
-#         elif intent == "select_product_by_position":
-#             position = message['entities'][0]['value']
-#             print(f"A selecionar o producto na posição {position}..")
-#             select_product_by_positions(position, tts)
+    if message == "OK":
+        return "OK"
+    
+    elif intent in intents_list:
         
-#         elif intent == "show_cart":
-#             print("A abrir ao carrinho...")
-#             open_cart(tts)
+        if intent == "OPEN_WEBSITE":
+            print("Abrindo o site...")
+            tts("A abrir o site da IKEA PORTUGAL")
+            open_website()
 
-#         elif intent == "show_favorites":
-#             print("A abrir os favoritos...")
-#             open_favourites(tts)
+        elif intent == "SHOW_FAVORITES":
+            print("A abrir os favoritos...")
+            open_favourites(tts)
 
-#         elif intent == "add_to_cart":
-#             print("A adicionar ao carrinho...")
-#             add_to_cart(tts)
+        elif intent == "SHOW_CART":
+            print("A abrir ao carrinho...")
+            open_cart(tts)
+
+        elif intent == "ADD_TO_CART":
+            print("A adicionar ao carrinho...")
+            add_to_cart(tts)
+
+        elif intent == "ADD_PRODUCT_FAVORITES":
+            print("A adicionar aos favoritos...")
+            add_to_favorites(tts)
+
+        elif intent == "SHOW_PRODUCTS":
+            category = message['recognized'][2]
+            print(f"Mostrando produtos de {category} ...")
+            show_product(category, tts)
         
-#         elif intent == "add_to_favorites":
-#             print("A adicionar aos favoritos...")
-#             add_to_favorites(tts)
+        elif intent == "SCROLL_DOWN":
+            print("A descer a pagina")
+            tts("A descer a página")
+            scroll_down()
 
-#         elif intent == "remove_cart":
-#             print("A remover produto do carrinho...")
-#             position = message['entities'][0]['value']
-#             remove_from_cart(position, tts)
-
-#         elif intent == "remove_favorites":
-#             print("A remover produto dos favoritos...")
-#             position = message['entities'][0]['value']
-#             remove_from_favorites(position,tts)
+        elif intent == "SCROLL_UP":
+            print("A subir a pagina")
+            tts("A subir a página")
+            scroll_up()
         
-#         elif intent == "go_back":
-#             print("A voltar para trás")
-#             go_back(tts)
-
-#         elif intent == "show_more":
-#             print("A mostrar mais produtos")
-#             show_more(tts)
-
-#         elif intent == "finalize_order":
-#             print("A finalizar a encomenda")
-#             finalize_order(tts)
-
-#         elif intent == "main_page":
-#             print("Voltar à Página Inicial")
-#             main_page(tts)
-
-#         elif intent == "order_products":
-#             print("Ordenar Produtos")
-#             criterio = message['entities'][0]['value']
-#             order_products(criterio, tts)
-#         elif intent == "ask_help":
-#             print ("Ajuda")
-#             ask_help(tts)
+        elif intent == "GO_BACK":
+            print("A voltar para trás")
+            go_back(tts)
         
-#         # Adicione outros intents conforme necessário, como scroll, add_to_cart, etc.
+        elif intent == "SHOW_MORE":
+            print("A mostrar mais produtos")
+            show_more(tts)
+    
+    # if message == "OK":
+    #     return "OK"
+    # elif  message["intent"]["name"] in intents_list:
+    #     intent = message["intent"]["name"]
+    #     confidence = message["intent"]["confidence"]
+    #     print(f"Intent: {intent} com confiança: {confidence}")
+    #     if message["intent"]["confidence"] < 0.7:
+    #         tts("Por favor repita o comando!")
+
+    #     # Verifica o intent e executa a ação correspondente
+    #     elif intent == "open_website":
+    #         # Se o intent for "open_website", chama a função para abrir o site
+    #         print("Abrindo o site...")
+    #         tts("A abrir o site da IKEA PORTUGAL")
+    #         open_website()
+
+    #     elif intent == "show_products":
+    #         # Aqui você pode adicionar lógica para mostrar produtos, etc.
+    #         category = message['entities'][0]['value']
+    #         print(f"Mostrando produtos de {category} ...")
+    #         # Chame a função que exibe produtos aqui, por exemplo
+    #         show_product(category, tts)
+
+    #     elif intent == "scroll_down":
+    #         # Se o intent for "scroll_up", chama a função para rolar para cima
+    #         print("A descer a pagina")
+    #         tts("A descer a página")
+    #         scroll_down()
+
+    #     elif intent == "scroll_up":
+    #         # Se o intent for "scroll_up", chama a função para rolar para cima
+    #         print("A subir a pagina")
+    #         tts("A subir a página")
+    #         scroll_up()
+
+    #     elif intent == "select_product_by_position":
+    #         position = message['entities'][0]['value']
+    #         print(f"A selecionar o producto na posição {position}..")
+    #         select_product_by_positions(position, tts)
         
-#         else:
-#             print(f"Intent não reconhecido: {intent}")
-#             tts("Por favor repita o comando!")
-#     else:
-#         print(f"Intent não reconhecido: {intent}")
-#         tts("Por favor repita o comando!")
+    #     elif intent == "show_cart":
+    #         print("A abrir ao carrinho...")
+    #         open_cart(tts)
+
+    #     elif intent == "show_favorites":
+    #         print("A abrir os favoritos...")
+    #         open_favourites(tts)
+
+    #     elif intent == "add_to_cart":
+    #         print("A adicionar ao carrinho...")
+    #         add_to_cart(tts)
+        
+    #     elif intent == "add_to_favorites":
+    #         print("A adicionar aos favoritos...")
+    #         add_to_favorites(tts)
+
+    #     elif intent == "remove_cart":
+    #         print("A remover produto do carrinho...")
+    #         position = message['entities'][0]['value']
+    #         remove_from_cart(position, tts)
+
+    #     elif intent == "remove_favorites":
+    #         print("A remover produto dos favoritos...")
+    #         position = message['entities'][0]['value']
+    #         remove_from_favorites(position,tts)
+        
+    #     elif intent == "go_back":
+    #         print("A voltar para trás")
+    #         go_back(tts)
+
+    #     elif intent == "show_more":
+    #         print("A mostrar mais produtos")
+    #         show_more(tts)
+
+    #     elif intent == "finalize_order":
+    #         print("A finalizar a encomenda")
+    #         finalize_order(tts)
+
+    #     elif intent == "main_page":
+    #         print("Voltar à Página Inicial")
+    #         main_page(tts)
+
+    #     elif intent == "order_products":
+    #         print("Ordenar Produtos")
+    #         criterio = message['entities'][0]['value']
+    #         order_products(criterio, tts)
+    #     elif intent == "ask_help":
+    #         print ("Ajuda")
+    #         ask_help(tts)
+        
+    #     # Adicione outros intents conforme necessário, como scroll, add_to_cart, etc.
+        
+    #     else:
+    #         print(f"Intent não reconhecido: {intent}")
+    #         tts("Por favor repita o comando!")
+    # else:
+    #     print(f"Intent não reconhecido: {intent}")
+    #     tts("Por favor repita o comando!")
 
 
 async def message_handler(message:str, tts):
+    
     message, status = process_message(message)
+    
     if message == "OK" and status == None:
         return "OK"
+    
     elif status == "voice":
         print(f"Voice command received: {message}")
+        await voice_message_handler(message, tts)
 
     # elif status == "gesture":
     #     await gesture_handler(game=game, gesture=message)
@@ -766,13 +823,12 @@ def process_message(message):
         if "recognized" in json_command:
             recognized = json.loads(json_command)["recognized"]
             modalidade = recognized[0]
-            print("Modalidade: ", modalidade)
+            
             if "GESTURES" == modalidade:
                 gesture = json.loads(json_command)
                 return gesture, "gesture"
             elif "SPEECH" == modalidade:
-                command = json.loads(json_command)["nlu"]
-                command = json.loads(command)
+                command = json.loads(json_command)
                 return command, "voice"
             elif "FUSION" == modalidade:
                 command = recognized[1]

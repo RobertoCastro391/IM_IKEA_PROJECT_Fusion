@@ -2,21 +2,46 @@
 <Gestures>
   <Gesture>
     <ID>0</ID>
+    <NAME>ex</NAME>
+    <SEMANTIC>ex</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>1</ID>
     <NAME>go_back</NAME>
     <SEMANTIC>goback</SEMANTIC>
   </Gesture>
   <Gesture>
-    <ID>1</ID>
+    <ID>2</ID>
+    <NAME>go_down</NAME>
+    <SEMANTIC>godown</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>3</ID>
+    <NAME>go_left</NAME>
+    <SEMANTIC>goleft</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>4</ID>
+    <NAME>go_right</NAME>
+    <SEMANTIC>goright</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>5</ID>
+    <NAME>go_up</NAME>
+    <SEMANTIC>goup</SEMANTIC>
+  </Gesture>
+  <Gesture>
+    <ID>6</ID>
     <NAME>main_page</NAME>
     <SEMANTIC>mainpage</SEMANTIC>
   </Gesture>
   <Gesture>
-    <ID>2</ID>
+    <ID>7</ID>
     <NAME>scroll_down</NAME>
     <SEMANTIC>scrolldown</SEMANTIC>
   </Gesture>
   <Gesture>
-    <ID>3</ID>
+    <ID>8</ID>
     <NAME>scroll_up</NAME>
     <SEMANTIC>scrollup</SEMANTIC>
   </Gesture>

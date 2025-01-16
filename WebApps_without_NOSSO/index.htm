@@ -417,35 +417,46 @@
 
       var obj = new Object();
       obj.text = final_transcript;
-      $.post("http://127.0.0.1:5005/model/parse", JSON.stringify(obj), function (data) {
+      $.post("http://localhost:5005/model/parse", JSON.stringify(obj), function (data) {
         console.log(data);
 
-        /*if (data.intent.name == 'change_color') {
-         var shape = '';
-         var color = '';
 
-         for (let i = 0; i < data.entities.length; i++) {
-           if (data.entities[i].entity == 'shape')
-             shape = data.entities[i].value.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-           if (data.entities[i].entity == 'color')
-             color = data.entities[i].value.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-         }
+        var message = { 'intent': data.intent.name, 'entities': data.entities }
+        var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
+        var intent_uppercase = data.intent.name.toUpperCase()
+        var confidence = data.intent.confidence
+        var entitiesValue = "ERROR"
 
-         var message = { 'intent': 'change_color', 'shape': shape, 'color': color }
-         var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
-         var result = { "recognized": ["SPEECH", "CHANGE_COLOR"], "text": messaget, "nlu": message };
-         if (shape != "")
-           result.recognized.push(shape);
-         if (color != "")
-           result.recognized.push(color);
+        console.log(data.entities.length)
 
-         mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
-           doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
-             setValue(JSON.stringify(result))));
-       }*/
+        if (data.entities.length > 0) {
+          entitiesValue = handleEntitiesValue(data.entities)
+          console.log(entitiesValue)
+        }
+        var result = { "recognized": ["SPEECH", intent_uppercase], "text": messaget, "nlu": JSON.stringify(data) };
 
+        if (entitiesValue != "ERROR") {
+          result.recognized.push(entitiesValue)
+        }
 
+        console.log(result);
+
+        mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
+          doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
+            setValue(JSON.stringify(result))));
+            
       });
+    }
+
+    const list_of_category = ["cadeiras", "cortinas", "mesas", "sofás", "poltronas", "secretárias", "bancos altos", "aparadores", "móveis de entrada", "móveis de TV", "mesas de centro", "camas", "roupeiros", "estantes", "prateleiras", "armários", "tapetes"]
+
+    function handleEntitiesValue(entities) {
+      var value_lowercase = entities[0].value.toLowerCase()
+      if (list_of_category.includes(value_lowercase) && entities[0].entity === "category") {
+        return value_lowercase.toUpperCase()
+      }
+
+      return "ERROR"
     }
 
     // Click mic to start voice recognition !!

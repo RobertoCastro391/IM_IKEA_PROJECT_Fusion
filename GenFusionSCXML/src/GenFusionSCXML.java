@@ -28,6 +28,8 @@ public class GenFusionSCXML {
         // Single Voice
 
         fg.Single(Speech.OPEN_WEBSITE, Output.OPEN_WEBSITE);
+        fg.Single(Speech.SHOW_FAVORITES, Output.SHOW_FAVORITES);
+        fg.Single(Speech.SHOW_CART, Output.SHOW_CART);
         fg.Single(Speech.ADD_PRODUCT_CART, Output.ADD_PRODUCT_CART);
         fg.Single(Speech.ADD_PRODUCT_FAVORITES, Output.ADD_PRODUCT_FAVORITES);
         fg.Single(Speech.REMOVE_PRODUCT_CART, Output.REMOVE_PRODUCT_CART);
