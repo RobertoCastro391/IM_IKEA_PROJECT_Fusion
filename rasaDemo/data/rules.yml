@@ -106,6 +106,21 @@ rules:
     - intent: main_page
     - action: action_main_page
 
+- rule: Affirm
+  steps:
+    - intent: affirm
+    - action: action_affirm
+
+- rule: Deny
+  steps:
+    - intent: deny
+    - action: action_deny
+
+- rule: Selecionar Area
+  steps:
+    - intent: select
+    - action: action_select
+
 - rule: Ordenar produtos
   steps:
     - intent: order_products

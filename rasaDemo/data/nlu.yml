@@ -9,6 +9,31 @@ nlu:
       - Não sei como fazer isso
       - Tens alguma sugestão?
 
+  - intent: affirm
+    examples: |
+      - Sim
+      - Claro
+      - Sim, por favor
+
+  - intent: deny
+    examples: |
+      - Não
+      - Não, obrigado
+      - Não, por favor
+
+  - intent: select
+    examples: |
+      - Seleciona este
+      - Escolhe este
+      - Selecione
+      - Seleciona
+      - Abre este
+      - Abre
+      - Abra este
+      - Abra
+      - Seleciona por favor
+      - Escolhe por favor
+
   - intent: show_products
     examples: |
       - Quero ver [cadeiras](category)

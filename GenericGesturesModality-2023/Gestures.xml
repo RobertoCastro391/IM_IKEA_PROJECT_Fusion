@@ -50,4 +50,9 @@
     <NAME>scroll_up</NAME>
     <SEMANTIC>scrollup</SEMANTIC>
   </Gesture>
+  <Gesture>
+    <ID>10</ID>
+    <NAME>select</NAME>
+    <SEMANTIC>select</SEMANTIC>
+  </Gesture>
 </Gestures>

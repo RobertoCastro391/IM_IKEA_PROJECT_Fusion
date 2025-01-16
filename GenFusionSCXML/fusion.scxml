@@ -14,411 +14,183 @@
     <onentry>
       <log label="[main]" expr="READY" />
     </onentry>
-    <transition target="sspeech[speech][show_products][armarios]" event="[SPEECH][SHOW_PRODUCTS][ARMARIOS]" />
-    <transition target="sspeech[speech][remove_product_cart]" event="[SPEECH][REMOVE_PRODUCT_CART]" />
-    <transition target="sgestures[gestures][go_down]" event="[GESTURES][GO_DOWN]" />
-    <transition target="sspeech[speech][show_more]" event="[SPEECH][SHOW_MORE]" />
-    <transition target="sgestures[gestures][main_page]" event="[GESTURES][MAIN_PAGE]" />
-    <transition target="sspeech[speech][remove_product_favorites]" event="[SPEECH][REMOVE_PRODUCT_FAVORITES]" />
-    <transition target="sgestures[gestures][go_right]" event="[GESTURES][GO_RIGHT]" />
-    <transition target="sspeech[speech][add_product_favorites]" event="[SPEECH][ADD_PRODUCT_FAVORITES]" />
-    <transition target="sspeech[speech][show_products][mesas]" event="[SPEECH][SHOW_PRODUCTS][MESAS]" />
-    <transition target="sspeech[speech][show_products][camas]" event="[SPEECH][SHOW_PRODUCTS][CAMAS]" />
-    <transition target="sspeech[speech][show_favorites]" event="[SPEECH][SHOW_FAVORITES]" />
-    <transition target="sgestures[gestures][go_up]" event="[GESTURES][GO_UP]" />
-    <transition target="sspeech[speech][scroll_down]" event="[SPEECH][SCROLL_DOWN]" />
-    <transition target="sgestures[gestures][go_left]" event="[GESTURES][GO_LEFT]" />
-    <transition target="sspeech[speech][add_product_cart]" event="[SPEECH][ADD_PRODUCT_CART]" />
-    <transition target="sspeech[speech][show_products][sofas]" event="[SPEECH][SHOW_PRODUCTS][SOFAS]" />
-    <transition target="sspeech[speech][show_products][estantes]" event="[SPEECH][SHOW_PRODUCTS][ESTANTES]" />
-    <transition target="sgestures[gestures][scroll_down]" event="[GESTURES][SCROLL_DOWN]" />
-    <transition target="sspeech[speech][show_cart]" event="[SPEECH][SHOW_CART]" />
-    <transition target="sgestures[gestures][go_back]" event="[GESTURES][GO_BACK]" />
-    <transition target="sspeech[speech][open_website]" event="[SPEECH][OPEN_WEBSITE]" />
-    <transition target="sspeech[speech][show_products][cadeiras]" event="[SPEECH][SHOW_PRODUCTS][CADEIRAS]" />
+    <transition target="sgestures[gestures][ex]" event="[GESTURES][EX]" />
     <transition target="sspeech[speech][go_back]" event="[SPEECH][GO_BACK]" />
-    <transition target="sgestures[gestures][close_web]" event="[GESTURES][CLOSE_WEB]" />
-    <transition target="sspeech[speech][scroll_up]" event="[SPEECH][SCROLL_UP]" />
-    <transition target="sgestures[gestures][scroll_up]" event="[GESTURES][SCROLL_UP]" />
+    <transition target="sspeech[speech][select_product_by_position][2]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][2]" />
+    <transition target="sspeech[speech][add_to_cart]" event="[SPEECH][ADD_TO_CART]" />
+    <transition target="sspeech[speech][finalize_order]" event="[SPEECH][FINALIZE_ORDER]" />
+    <transition target="sgestures[gestures][exit]" event="[GESTURES][EXIT]" />
+    <transition target="sspeech[speech][open_website]" event="[SPEECH][OPEN_WEBSITE]" />
+    <transition target="sspeech[speech][select_product_by_position][6]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][6]" />
+    <transition target="sspeech[speech][show_products][cadeiras]" event="[SPEECH][SHOW_PRODUCTS][CADEIRAS]" />
+    <transition target="sspeech[speech][select_product_by_position][8]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][8]" />
+    <transition target="sspeech[speech][show_more]" event="[SPEECH][SHOW_MORE]" />
+    <transition target="sspeech[speech][select_product_by_position][9]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][9]" />
+    <transition target="sspeech[speech][deny]" event="[SPEECH][DENY]" />
+    <transition target="sspeech[speech][select_product_by_position][10]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][10]" />
+    <transition target="sgestures[gestures][select]" event="[GESTURES][SELECT]" />
+    <transition target="sspeech[speech][select_product_by_position][4]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][4]" />
+    <transition target="sspeech[speech][show_products][estantes]" event="[SPEECH][SHOW_PRODUCTS][ESTANTES]" />
+    <transition target="sgestures[gestures][goup]" event="[GESTURES][GOUP]" />
+    <transition target="sgestures[gestures][goright]" event="[GESTURES][GORIGHT]" />
+    <transition target="sspeech[speech][remove_cart]" event="[SPEECH][REMOVE_CART]" />
+    <transition target="sspeech[speech][show_cart]" event="[SPEECH][SHOW_CART]" />
+    <transition target="sgestures[gestures][goleft]" event="[GESTURES][GOLEFT]" />
+    <transition target="sgestures[gestures][scrollup]" event="[GESTURES][SCROLLUP]" />
+    <transition target="sspeech[speech][show_products][camas]" event="[SPEECH][SHOW_PRODUCTS][CAMAS]" />
+    <transition target="sspeech[speech][select_product_by_position][5]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][5]" />
+    <transition target="sspeech[speech][add_to_favorites]" event="[SPEECH][ADD_TO_FAVORITES]" />
+    <transition target="sspeech[speech][select_product_by_position][1]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][1]" />
+    <transition target="sspeech[speech][select]" event="[SPEECH][SELECT]" />
+    <transition target="sgestures[gestures][godown]" event="[GESTURES][GODOWN]" />
+    <transition target="sspeech[speech][remove_favorites]" event="[SPEECH][REMOVE_FAVORITES]" />
     <transition target="sspeech[speech][main_page]" event="[SPEECH][MAIN_PAGE]" />
+    <transition target="sgestures[gestures][mainpage]" event="[GESTURES][MAINPAGE]" />
+    <transition target="sspeech[speech][show_products][mesas]" event="[SPEECH][SHOW_PRODUCTS][MESAS]" />
+    <transition target="sspeech[speech][show_products][armarios]" event="[SPEECH][SHOW_PRODUCTS][ARMARIOS]" />
+    <transition target="sspeech[speech][scroll_down]" event="[SPEECH][SCROLL_DOWN]" />
+    <transition target="sspeech[speech][show_favorites]" event="[SPEECH][SHOW_FAVORITES]" />
+    <transition target="sspeech[speech][scroll_up]" event="[SPEECH][SCROLL_UP]" />
+    <transition target="sspeech[speech][show_products][sofas]" event="[SPEECH][SHOW_PRODUCTS][SOFAS]" />
+    <transition target="sspeech[speech][select_product_by_position][7]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][7]" />
+    <transition target="sspeech[speech][affirm]" event="[SPEECH][AFFIRM]" />
+    <transition target="sgestures[gestures][goback]" event="[GESTURES][GOBACK]" />
+    <transition target="sspeech[speech][select_product_by_position][3]" event="[SPEECH][SELECT_PRODUCT_BY_POSITION][3]" />
+    <transition target="sgestures[gestures][scrolldown]" event="[GESTURES][SCROLLDOWN]" />
   </state>
-  <state id="sspeech[speech][show_products][armarios]">
+  <state id="sgestures[gestures][ex]">
     <onentry>
-      <log label="[sspeech[speech][show_products][armarios]]" expr="READY" />
+      <log label="[sgestures[gestures][ex]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][show_products][armarios]" event="timeout-sspeech[speech][show_products][armarios]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sgestures[gestures][ex]" event="timeout-sgestures[gestures][ex]" delay="5000" target="" targettype="" namelist="" />
     </onentry>
-    <transition target="speech[speech][show_products][armarios]-final" event="timeout-sspeech[speech][show_products][armarios]" />
+    <transition target="main" event="timeout-sgestures[gestures][ex]" />
+    <transition target="sgestures[gestures][ex]-speech[speech][remove_cart]" event="[SPEECH][REMOVE_CART]" />
+    <transition target="sgestures[gestures][ex]-speech[speech][remove_favorites]" event="[SPEECH][REMOVE_FAVORITES]" />
     <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][show_products][armarios]" />
+      <cancel sendid="state1-timer-sgestures[gestures][ex]" />
     </onexit>
   </state>
-  <state id="speech[speech][show_products][armarios]-final">
+  <state id="sgestures[gestures][ex]-speech[speech][remove_cart]">
     <onentry>
-      <log label="[speech[speech][show_products][armarios]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][ARMARIOS]')}" />
-      <send event="SEARCH_PRODUCT_ARMARIOS" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][remove_product_cart]">
-    <onentry>
-      <log label="[sspeech[speech][remove_product_cart]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][remove_product_cart]" event="timeout-sspeech[speech][remove_product_cart]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][remove_product_cart]-final" event="timeout-sspeech[speech][remove_product_cart]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][remove_product_cart]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][remove_product_cart]-final">
-    <onentry>
-      <log label="[speech[speech][remove_product_cart]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][REMOVE_PRODUCT_CART]')}" />
+      <log label="[sgestures[gestures][ex]-speech[speech][remove_cart]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][REMOVE_PRODUCT_CART]')}" />
       <send event="REMOVE_PRODUCT_CART" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
-  <state id="sgestures[gestures][go_down]">
+  <state id="sgestures[gestures][ex]-speech[speech][remove_favorites]">
     <onentry>
-      <log label="[sgestures[gestures][go_down]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][go_down]" event="timeout-sgestures[gestures][go_down]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="gestures[gestures][go_down]-final" event="timeout-sgestures[gestures][go_down]" />
-    <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][go_down]" />
-    </onexit>
-  </state>
-  <state id="gestures[gestures][go_down]-final">
-    <onentry>
-      <log label="[gestures[gestures][go_down]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][GO_DOWN]')}" />
-      <send event="GO_DOWN" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][show_more]">
-    <onentry>
-      <log label="[sspeech[speech][show_more]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][show_more]" event="timeout-sspeech[speech][show_more]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][show_more]-final" event="timeout-sspeech[speech][show_more]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][show_more]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][show_more]-final">
-    <onentry>
-      <log label="[speech[speech][show_more]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_MORE]')}" />
-      <send event="SHOW_MORE" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sgestures[gestures][main_page]">
-    <onentry>
-      <log label="[sgestures[gestures][main_page]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][main_page]" event="timeout-sgestures[gestures][main_page]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="gestures[gestures][main_page]-final" event="timeout-sgestures[gestures][main_page]" />
-    <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][main_page]" />
-    </onexit>
-  </state>
-  <state id="gestures[gestures][main_page]-final">
-    <onentry>
-      <log label="[gestures[gestures][main_page]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][MAIN_PAGE]')}" />
-      <send event="MAIN_PAGE" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][remove_product_favorites]">
-    <onentry>
-      <log label="[sspeech[speech][remove_product_favorites]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][remove_product_favorites]" event="timeout-sspeech[speech][remove_product_favorites]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][remove_product_favorites]-final" event="timeout-sspeech[speech][remove_product_favorites]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][remove_product_favorites]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][remove_product_favorites]-final">
-    <onentry>
-      <log label="[speech[speech][remove_product_favorites]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][REMOVE_PRODUCT_FAVORITES]')}" />
+      <log label="[sgestures[gestures][ex]-speech[speech][remove_favorites]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][REMOVE_PRODUCT_FAVORITES]')}" />
       <send event="REMOVE_PRODUCT_FAVORITES" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
-  <state id="sgestures[gestures][go_right]">
+  <state id="sspeech[speech][go_back]">
     <onentry>
-      <log label="[sgestures[gestures][go_right]]" expr="READY" />
+      <log label="[sspeech[speech][go_back]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][go_right]" event="timeout-sgestures[gestures][go_right]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[speech][go_back]" event="timeout-sspeech[speech][go_back]" delay="5000" target="" targettype="" namelist="" />
     </onentry>
-    <transition target="gestures[gestures][go_right]-final" event="timeout-sgestures[gestures][go_right]" />
+    <transition target="speech[speech][go_back]-final" event="timeout-sspeech[speech][go_back]" />
+    <transition target="sspeech[speech][go_back]-gestures[gestures][goback]" event="[GESTURES][GOBACK]" />
     <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][go_right]" />
+      <cancel sendid="state1-timer-sspeech[speech][go_back]" />
     </onexit>
   </state>
-  <state id="gestures[gestures][go_right]-final">
+  <state id="speech[speech][go_back]-final">
     <onentry>
-      <log label="[gestures[gestures][go_right]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][GO_RIGHT]')}" />
-      <send event="GO_RIGHT" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][add_product_favorites]">
-    <onentry>
-      <log label="[sspeech[speech][add_product_favorites]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][add_product_favorites]" event="timeout-sspeech[speech][add_product_favorites]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][add_product_favorites]-final" event="timeout-sspeech[speech][add_product_favorites]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][add_product_favorites]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][add_product_favorites]-final">
-    <onentry>
-      <log label="[speech[speech][add_product_favorites]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][ADD_PRODUCT_FAVORITES]')}" />
-      <send event="ADD_PRODUCT_FAVORITES" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][show_products][mesas]">
-    <onentry>
-      <log label="[sspeech[speech][show_products][mesas]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][show_products][mesas]" event="timeout-sspeech[speech][show_products][mesas]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][show_products][mesas]-final" event="timeout-sspeech[speech][show_products][mesas]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][show_products][mesas]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][show_products][mesas]-final">
-    <onentry>
-      <log label="[speech[speech][show_products][mesas]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][MESAS]')}" />
-      <send event="SEARCH_PRODUCT_MESAS" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][show_products][camas]">
-    <onentry>
-      <log label="[sspeech[speech][show_products][camas]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][show_products][camas]" event="timeout-sspeech[speech][show_products][camas]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][show_products][camas]-final" event="timeout-sspeech[speech][show_products][camas]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][show_products][camas]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][show_products][camas]-final">
-    <onentry>
-      <log label="[speech[speech][show_products][camas]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][CAMAS]')}" />
-      <send event="SEARCH_PRODUCT_CAMAS" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][show_favorites]">
-    <onentry>
-      <log label="[sspeech[speech][show_favorites]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][show_favorites]" event="timeout-sspeech[speech][show_favorites]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][show_favorites]-final" event="timeout-sspeech[speech][show_favorites]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][show_favorites]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][show_favorites]-final">
-    <onentry>
-      <log label="[speech[speech][show_favorites]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_FAVORITES]')}" />
-      <send event="SHOW_FAVORITES" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sgestures[gestures][go_up]">
-    <onentry>
-      <log label="[sgestures[gestures][go_up]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][go_up]" event="timeout-sgestures[gestures][go_up]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="gestures[gestures][go_up]-final" event="timeout-sgestures[gestures][go_up]" />
-    <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][go_up]" />
-    </onexit>
-  </state>
-  <state id="gestures[gestures][go_up]-final">
-    <onentry>
-      <log label="[gestures[gestures][go_up]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][GO_UP]')}" />
-      <send event="GO_UP" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][scroll_down]">
-    <onentry>
-      <log label="[sspeech[speech][scroll_down]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][scroll_down]" event="timeout-sspeech[speech][scroll_down]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][scroll_down]-final" event="timeout-sspeech[speech][scroll_down]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][scroll_down]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][scroll_down]-final">
-    <onentry>
-      <log label="[speech[speech][scroll_down]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SCROLL_DOWN]')}" />
-      <send event="SCROLL_DOWN" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sgestures[gestures][go_left]">
-    <onentry>
-      <log label="[sgestures[gestures][go_left]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][go_left]" event="timeout-sgestures[gestures][go_left]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="gestures[gestures][go_left]-final" event="timeout-sgestures[gestures][go_left]" />
-    <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][go_left]" />
-    </onexit>
-  </state>
-  <state id="gestures[gestures][go_left]-final">
-    <onentry>
-      <log label="[gestures[gestures][go_left]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][GO_LEFT]')}" />
-      <send event="GO_LEFT" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][add_product_cart]">
-    <onentry>
-      <log label="[sspeech[speech][add_product_cart]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][add_product_cart]" event="timeout-sspeech[speech][add_product_cart]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][add_product_cart]-final" event="timeout-sspeech[speech][add_product_cart]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][add_product_cart]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][add_product_cart]-final">
-    <onentry>
-      <log label="[speech[speech][add_product_cart]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][ADD_PRODUCT_CART]')}" />
-      <send event="ADD_PRODUCT_CART" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][show_products][sofas]">
-    <onentry>
-      <log label="[sspeech[speech][show_products][sofas]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][show_products][sofas]" event="timeout-sspeech[speech][show_products][sofas]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][show_products][sofas]-final" event="timeout-sspeech[speech][show_products][sofas]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][show_products][sofas]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][show_products][sofas]-final">
-    <onentry>
-      <log label="[speech[speech][show_products][sofas]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][SOFAS]')}" />
-      <send event="SEARCH_PRODUCT_SOFAS" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][show_products][estantes]">
-    <onentry>
-      <log label="[sspeech[speech][show_products][estantes]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][show_products][estantes]" event="timeout-sspeech[speech][show_products][estantes]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][show_products][estantes]-final" event="timeout-sspeech[speech][show_products][estantes]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][show_products][estantes]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][show_products][estantes]-final">
-    <onentry>
-      <log label="[speech[speech][show_products][estantes]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][ESTANTES]')}" />
-      <send event="SEARCH_PRODUCT_ESTANTES" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sgestures[gestures][scroll_down]">
-    <onentry>
-      <log label="[sgestures[gestures][scroll_down]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][scroll_down]" event="timeout-sgestures[gestures][scroll_down]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="gestures[gestures][scroll_down]-final" event="timeout-sgestures[gestures][scroll_down]" />
-    <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][scroll_down]" />
-    </onexit>
-  </state>
-  <state id="gestures[gestures][scroll_down]-final">
-    <onentry>
-      <log label="[gestures[gestures][scroll_down]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SCROLL_DOWN]')}" />
-      <send event="SCROLL_DOWN" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sspeech[speech][show_cart]">
-    <onentry>
-      <log label="[sspeech[speech][show_cart]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][show_cart]" event="timeout-sspeech[speech][show_cart]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="speech[speech][show_cart]-final" event="timeout-sspeech[speech][show_cart]" />
-    <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][show_cart]" />
-    </onexit>
-  </state>
-  <state id="speech[speech][show_cart]-final">
-    <onentry>
-      <log label="[speech[speech][show_cart]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_CART]')}" />
-      <send event="SHOW_CART" target="IM" targettype="MC" namelist="newExtensionNotification" />
-    </onentry>
-    <transition target="main" />
-  </state>
-  <state id="sgestures[gestures][go_back]">
-    <onentry>
-      <log label="[sgestures[gestures][go_back]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][go_back]" event="timeout-sgestures[gestures][go_back]" delay="0" target="" targettype="" namelist="" />
-    </onentry>
-    <transition target="gestures[gestures][go_back]-final" event="timeout-sgestures[gestures][go_back]" />
-    <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][go_back]" />
-    </onexit>
-  </state>
-  <state id="gestures[gestures][go_back]-final">
-    <onentry>
-      <log label="[gestures[gestures][go_back]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][GO_BACK]')}" />
+      <log label="[speech[speech][go_back]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][GO_BACK]')}" />
       <send event="GO_BACK" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][go_back]-gestures[gestures][goback]">
+    <onentry>
+      <log label="[sspeech[speech][go_back]-gestures[gestures][goback]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][GO_BACK]')}" />
+      <send event="GO_BACK" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select_product_by_position][2]">
+    <onentry>
+      <log label="[sspeech[speech][select_product_by_position][2]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][2]" event="timeout-sspeech[speech][select_product_by_position][2]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select_product_by_position][2]-final" event="timeout-sspeech[speech][select_product_by_position][2]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][2]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select_product_by_position][2]-final">
+    <onentry>
+      <log label="[speech[speech][select_product_by_position][2]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][2]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_2" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][add_to_cart]">
+    <onentry>
+      <log label="[sspeech[speech][add_to_cart]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][add_to_cart]" event="timeout-sspeech[speech][add_to_cart]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][add_to_cart]-final" event="timeout-sspeech[speech][add_to_cart]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][add_to_cart]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][add_to_cart]-final">
+    <onentry>
+      <log label="[speech[speech][add_to_cart]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][ADD_TO_CART]')}" />
+      <send event="ADD_TO_CART" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][finalize_order]">
+    <onentry>
+      <log label="[sspeech[speech][finalize_order]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][finalize_order]" event="timeout-sspeech[speech][finalize_order]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][finalize_order]-final" event="timeout-sspeech[speech][finalize_order]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][finalize_order]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][finalize_order]-final">
+    <onentry>
+      <log label="[speech[speech][finalize_order]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][FINALIZE_ORDER]')}" />
+      <send event="FINALIZE_ORDER" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][exit]">
+    <onentry>
+      <log label="[sgestures[gestures][exit]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][exit]" event="timeout-sgestures[gestures][exit]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][exit]-final" event="timeout-sgestures[gestures][exit]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][exit]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][exit]-final">
+    <onentry>
+      <log label="[gestures[gestures][exit]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][EXIT]')}" />
+      <send event="CLOSE_WEB" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
@@ -441,6 +213,25 @@
     </onentry>
     <transition target="main" />
   </state>
+  <state id="sspeech[speech][select_product_by_position][6]">
+    <onentry>
+      <log label="[sspeech[speech][select_product_by_position][6]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][6]" event="timeout-sspeech[speech][select_product_by_position][6]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select_product_by_position][6]-final" event="timeout-sspeech[speech][select_product_by_position][6]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][6]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select_product_by_position][6]-final">
+    <onentry>
+      <log label="[speech[speech][select_product_by_position][6]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][6]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_6" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
   <state id="sspeech[speech][show_products][cadeiras]">
     <onentry>
       <log label="[sspeech[speech][show_products][cadeiras]]" expr="READY" />
@@ -460,79 +251,428 @@
     </onentry>
     <transition target="main" />
   </state>
-  <state id="sspeech[speech][go_back]">
+  <state id="sspeech[speech][select_product_by_position][8]">
     <onentry>
-      <log label="[sspeech[speech][go_back]]" expr="READY" />
+      <log label="[sspeech[speech][select_product_by_position][8]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][go_back]" event="timeout-sspeech[speech][go_back]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][8]" event="timeout-sspeech[speech][select_product_by_position][8]" delay="0" target="" targettype="" namelist="" />
     </onentry>
-    <transition target="speech[speech][go_back]-final" event="timeout-sspeech[speech][go_back]" />
+    <transition target="speech[speech][select_product_by_position][8]-final" event="timeout-sspeech[speech][select_product_by_position][8]" />
     <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][go_back]" />
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][8]" />
     </onexit>
   </state>
-  <state id="speech[speech][go_back]-final">
+  <state id="speech[speech][select_product_by_position][8]-final">
     <onentry>
-      <log label="[speech[speech][go_back]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][GO_BACK]')}" />
-      <send event="GO_BACK" target="IM" targettype="MC" namelist="newExtensionNotification" />
+      <log label="[speech[speech][select_product_by_position][8]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][8]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_8" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
-  <state id="sgestures[gestures][close_web]">
+  <state id="sspeech[speech][show_more]">
     <onentry>
-      <log label="[sgestures[gestures][close_web]]" expr="READY" />
+      <log label="[sspeech[speech][show_more]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][close_web]" event="timeout-sgestures[gestures][close_web]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[speech][show_more]" event="timeout-sspeech[speech][show_more]" delay="0" target="" targettype="" namelist="" />
     </onentry>
-    <transition target="gestures[gestures][close_web]-final" event="timeout-sgestures[gestures][close_web]" />
+    <transition target="speech[speech][show_more]-final" event="timeout-sspeech[speech][show_more]" />
     <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][close_web]" />
+      <cancel sendid="state1-timer-sspeech[speech][show_more]" />
     </onexit>
   </state>
-  <state id="gestures[gestures][close_web]-final">
+  <state id="speech[speech][show_more]-final">
     <onentry>
-      <log label="[gestures[gestures][close_web]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][CLOSE_WEB]')}" />
-      <send event="CLOSE_WEB" target="IM" targettype="MC" namelist="newExtensionNotification" />
+      <log label="[speech[speech][show_more]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_MORE]')}" />
+      <send event="SHOW_MORE" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
-  <state id="sspeech[speech][scroll_up]">
+  <state id="sspeech[speech][select_product_by_position][9]">
     <onentry>
-      <log label="[sspeech[speech][scroll_up]]" expr="READY" />
+      <log label="[sspeech[speech][select_product_by_position][9]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][scroll_up]" event="timeout-sspeech[speech][scroll_up]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][9]" event="timeout-sspeech[speech][select_product_by_position][9]" delay="0" target="" targettype="" namelist="" />
     </onentry>
-    <transition target="speech[speech][scroll_up]-final" event="timeout-sspeech[speech][scroll_up]" />
+    <transition target="speech[speech][select_product_by_position][9]-final" event="timeout-sspeech[speech][select_product_by_position][9]" />
     <onexit>
-      <cancel sendid="state1-timer-sspeech[speech][scroll_up]" />
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][9]" />
     </onexit>
   </state>
-  <state id="speech[speech][scroll_up]-final">
+  <state id="speech[speech][select_product_by_position][9]-final">
     <onentry>
-      <log label="[speech[speech][scroll_up]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SCROLL_UP]')}" />
+      <log label="[speech[speech][select_product_by_position][9]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][9]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_9" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][deny]">
+    <onentry>
+      <log label="[sspeech[speech][deny]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][deny]" event="timeout-sspeech[speech][deny]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][deny]-final" event="timeout-sspeech[speech][deny]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][deny]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][deny]-final">
+    <onentry>
+      <log label="[speech[speech][deny]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][DENY]')}" />
+      <send event="DENY" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select_product_by_position][10]">
+    <onentry>
+      <log label="[sspeech[speech][select_product_by_position][10]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][10]" event="timeout-sspeech[speech][select_product_by_position][10]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select_product_by_position][10]-final" event="timeout-sspeech[speech][select_product_by_position][10]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][10]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select_product_by_position][10]-final">
+    <onentry>
+      <log label="[speech[speech][select_product_by_position][10]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][10]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_10" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][select]">
+    <onentry>
+      <log label="[sgestures[gestures][select]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][select]" event="timeout-sgestures[gestures][select]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="main" event="timeout-sgestures[gestures][select]" />
+    <transition target="sgestures[gestures][select]-speech[speech][select]" event="[SPEECH][SELECT]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][select]" />
+    </onexit>
+  </state>
+  <state id="sgestures[gestures][select]-speech[speech][select]">
+    <onentry>
+      <log label="[sgestures[gestures][select]-speech[speech][select]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][SELECT]')}" />
+      <send event="SELECT" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select_product_by_position][4]">
+    <onentry>
+      <log label="[sspeech[speech][select_product_by_position][4]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][4]" event="timeout-sspeech[speech][select_product_by_position][4]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select_product_by_position][4]-final" event="timeout-sspeech[speech][select_product_by_position][4]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][4]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select_product_by_position][4]-final">
+    <onentry>
+      <log label="[speech[speech][select_product_by_position][4]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][4]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_4" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][show_products][estantes]">
+    <onentry>
+      <log label="[sspeech[speech][show_products][estantes]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][show_products][estantes]" event="timeout-sspeech[speech][show_products][estantes]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][show_products][estantes]-final" event="timeout-sspeech[speech][show_products][estantes]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][show_products][estantes]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][show_products][estantes]-final">
+    <onentry>
+      <log label="[speech[speech][show_products][estantes]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][ESTANTES]')}" />
+      <send event="SEARCH_PRODUCT_ESTANTES" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][goup]">
+    <onentry>
+      <log label="[sgestures[gestures][goup]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][goup]" event="timeout-sgestures[gestures][goup]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][goup]-final" event="timeout-sgestures[gestures][goup]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][goup]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][goup]-final">
+    <onentry>
+      <log label="[gestures[gestures][goup]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][GO_UP]')}" />
+      <send event="GO_UP" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][goright]">
+    <onentry>
+      <log label="[sgestures[gestures][goright]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][goright]" event="timeout-sgestures[gestures][goright]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][goright]-final" event="timeout-sgestures[gestures][goright]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][goright]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][goright]-final">
+    <onentry>
+      <log label="[gestures[gestures][goright]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][GO_RIGHT]')}" />
+      <send event="GO_RIGHT" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][remove_cart]">
+    <onentry>
+      <log label="[sspeech[speech][remove_cart]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][remove_cart]" event="timeout-sspeech[speech][remove_cart]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="main" event="timeout-sspeech[speech][remove_cart]" />
+    <transition target="sspeech[speech][remove_cart]-gestures[gestures][ex]" event="[GESTURES][EX]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][remove_cart]" />
+    </onexit>
+  </state>
+  <state id="sspeech[speech][remove_cart]-gestures[gestures][ex]">
+    <onentry>
+      <log label="[sspeech[speech][remove_cart]-gestures[gestures][ex]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][REMOVE_PRODUCT_CART]')}" />
+      <send event="REMOVE_PRODUCT_CART" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][show_cart]">
+    <onentry>
+      <log label="[sspeech[speech][show_cart]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][show_cart]" event="timeout-sspeech[speech][show_cart]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][show_cart]-final" event="timeout-sspeech[speech][show_cart]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][show_cart]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][show_cart]-final">
+    <onentry>
+      <log label="[speech[speech][show_cart]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_CART]')}" />
+      <send event="SHOW_CART" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][goleft]">
+    <onentry>
+      <log label="[sgestures[gestures][goleft]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][goleft]" event="timeout-sgestures[gestures][goleft]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][goleft]-final" event="timeout-sgestures[gestures][goleft]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][goleft]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][goleft]-final">
+    <onentry>
+      <log label="[gestures[gestures][goleft]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][GO_LEFT]')}" />
+      <send event="GO_LEFT" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][scrollup]">
+    <onentry>
+      <log label="[sgestures[gestures][scrollup]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][scrollup]" event="timeout-sgestures[gestures][scrollup]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][scrollup]-final" event="timeout-sgestures[gestures][scrollup]" />
+    <transition target="sgestures[gestures][scrollup]-speech[speech][scroll_up]" event="[SPEECH][SCROLL_UP]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][scrollup]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][scrollup]-final">
+    <onentry>
+      <log label="[gestures[gestures][scrollup]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][SCROLL_UP]')}" />
       <send event="SCROLL_UP" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
-  <state id="sgestures[gestures][scroll_up]">
+  <state id="sgestures[gestures][scrollup]-speech[speech][scroll_up]">
     <onentry>
-      <log label="[sgestures[gestures][scroll_up]]" expr="READY" />
-      <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sgestures[gestures][scroll_up]" event="timeout-sgestures[gestures][scroll_up]" delay="0" target="" targettype="" namelist="" />
+      <log label="[sgestures[gestures][scrollup]-speech[speech][scroll_up]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][SCROLL_UP]')}" />
+      <send event="SCROLL_UP" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
-    <transition target="gestures[gestures][scroll_up]-final" event="timeout-sgestures[gestures][scroll_up]" />
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][show_products][camas]">
+    <onentry>
+      <log label="[sspeech[speech][show_products][camas]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][show_products][camas]" event="timeout-sspeech[speech][show_products][camas]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][show_products][camas]-final" event="timeout-sspeech[speech][show_products][camas]" />
     <onexit>
-      <cancel sendid="state1-timer-sgestures[gestures][scroll_up]" />
+      <cancel sendid="state1-timer-sspeech[speech][show_products][camas]" />
     </onexit>
   </state>
-  <state id="gestures[gestures][scroll_up]-final">
+  <state id="speech[speech][show_products][camas]-final">
     <onentry>
-      <log label="[gestures[gestures][scroll_up]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SCROLL_UP]')}" />
-      <send event="SCROLL_UP" target="IM" targettype="MC" namelist="newExtensionNotification" />
+      <log label="[speech[speech][show_products][camas]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][CAMAS]')}" />
+      <send event="SEARCH_PRODUCT_CAMAS" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select_product_by_position][5]">
+    <onentry>
+      <log label="[sspeech[speech][select_product_by_position][5]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][5]" event="timeout-sspeech[speech][select_product_by_position][5]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select_product_by_position][5]-final" event="timeout-sspeech[speech][select_product_by_position][5]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][5]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select_product_by_position][5]-final">
+    <onentry>
+      <log label="[speech[speech][select_product_by_position][5]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][5]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_5" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][add_to_favorites]">
+    <onentry>
+      <log label="[sspeech[speech][add_to_favorites]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][add_to_favorites]" event="timeout-sspeech[speech][add_to_favorites]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][add_to_favorites]-final" event="timeout-sspeech[speech][add_to_favorites]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][add_to_favorites]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][add_to_favorites]-final">
+    <onentry>
+      <log label="[speech[speech][add_to_favorites]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][ADD_TO_FAVORITES]')}" />
+      <send event="ADD_TO_FAVORITES" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select_product_by_position][1]">
+    <onentry>
+      <log label="[sspeech[speech][select_product_by_position][1]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][1]" event="timeout-sspeech[speech][select_product_by_position][1]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select_product_by_position][1]-final" event="timeout-sspeech[speech][select_product_by_position][1]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][1]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select_product_by_position][1]-final">
+    <onentry>
+      <log label="[speech[speech][select_product_by_position][1]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][1]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_1" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select]">
+    <onentry>
+      <log label="[sspeech[speech][select]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select]" event="timeout-sspeech[speech][select]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select]-final" event="timeout-sspeech[speech][select]" />
+    <transition target="sspeech[speech][select]-gestures[gestures][select]" event="[GESTURES][SELECT]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select]-final">
+    <onentry>
+      <log label="[speech[speech][select]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][SELECT]')}" />
+      <send event="SELECT" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select]-gestures[gestures][select]">
+    <onentry>
+      <log label="[sspeech[speech][select]-gestures[gestures][select]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][SELECT]')}" />
+      <send event="SELECT" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][godown]">
+    <onentry>
+      <log label="[sgestures[gestures][godown]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][godown]" event="timeout-sgestures[gestures][godown]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][godown]-final" event="timeout-sgestures[gestures][godown]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][godown]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][godown]-final">
+    <onentry>
+      <log label="[gestures[gestures][godown]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[GESTURES][GO_DOWN]')}" />
+      <send event="GO_DOWN" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][remove_favorites]">
+    <onentry>
+      <log label="[sspeech[speech][remove_favorites]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][remove_favorites]" event="timeout-sspeech[speech][remove_favorites]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="main" event="timeout-sspeech[speech][remove_favorites]" />
+    <transition target="sspeech[speech][remove_favorites]-gestures[gestures][ex]" event="[GESTURES][EX]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][remove_favorites]" />
+    </onexit>
+  </state>
+  <state id="sspeech[speech][remove_favorites]-gestures[gestures][ex]">
+    <onentry>
+      <log label="[sspeech[speech][remove_favorites]-gestures[gestures][ex]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][REMOVE_PRODUCT_FAVORITES]')}" />
+      <send event="REMOVE_PRODUCT_FAVORITES" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
@@ -540,9 +680,10 @@
     <onentry>
       <log label="[sspeech[speech][main_page]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[speech][main_page]" event="timeout-sspeech[speech][main_page]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[speech][main_page]" event="timeout-sspeech[speech][main_page]" delay="5000" target="" targettype="" namelist="" />
     </onentry>
     <transition target="speech[speech][main_page]-final" event="timeout-sspeech[speech][main_page]" />
+    <transition target="sspeech[speech][main_page]-gestures[gestures][mainpage]" event="[GESTURES][MAINPAGE]" />
     <onexit>
       <cancel sendid="state1-timer-sspeech[speech][main_page]" />
     </onexit>
@@ -550,8 +691,295 @@
   <state id="speech[speech][main_page]-final">
     <onentry>
       <log label="[speech[speech][main_page]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][MAIN_PAGE]')}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][MAIN_PAGE]')}" />
       <send event="MAIN_PAGE" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][main_page]-gestures[gestures][mainpage]">
+    <onentry>
+      <log label="[sspeech[speech][main_page]-gestures[gestures][mainpage]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][MAIN_PAGE]')}" />
+      <send event="MAIN_PAGE" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][mainpage]">
+    <onentry>
+      <log label="[sgestures[gestures][mainpage]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][mainpage]" event="timeout-sgestures[gestures][mainpage]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][mainpage]-final" event="timeout-sgestures[gestures][mainpage]" />
+    <transition target="sgestures[gestures][mainpage]-speech[speech][main_page]" event="[SPEECH][MAIN_PAGE]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][mainpage]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][mainpage]-final">
+    <onentry>
+      <log label="[gestures[gestures][mainpage]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][MAIN_PAGE]')}" />
+      <send event="MAIN_PAGE" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][mainpage]-speech[speech][main_page]">
+    <onentry>
+      <log label="[sgestures[gestures][mainpage]-speech[speech][main_page]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][MAIN_PAGE]')}" />
+      <send event="MAIN_PAGE" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][show_products][mesas]">
+    <onentry>
+      <log label="[sspeech[speech][show_products][mesas]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][show_products][mesas]" event="timeout-sspeech[speech][show_products][mesas]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][show_products][mesas]-final" event="timeout-sspeech[speech][show_products][mesas]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][show_products][mesas]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][show_products][mesas]-final">
+    <onentry>
+      <log label="[speech[speech][show_products][mesas]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][MESAS]')}" />
+      <send event="SEARCH_PRODUCT_MESAS" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][show_products][armarios]">
+    <onentry>
+      <log label="[sspeech[speech][show_products][armarios]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][show_products][armarios]" event="timeout-sspeech[speech][show_products][armarios]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][show_products][armarios]-final" event="timeout-sspeech[speech][show_products][armarios]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][show_products][armarios]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][show_products][armarios]-final">
+    <onentry>
+      <log label="[speech[speech][show_products][armarios]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][ARMARIOS]')}" />
+      <send event="SEARCH_PRODUCT_ARMARIOS" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][scroll_down]">
+    <onentry>
+      <log label="[sspeech[speech][scroll_down]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][scroll_down]" event="timeout-sspeech[speech][scroll_down]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][scroll_down]-final" event="timeout-sspeech[speech][scroll_down]" />
+    <transition target="sspeech[speech][scroll_down]-gestures[gestures][scrolldown]" event="[GESTURES][SCROLLDOWN]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][scroll_down]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][scroll_down]-final">
+    <onentry>
+      <log label="[speech[speech][scroll_down]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][SCROLL_DOWN]')}" />
+      <send event="SCROLL_DOWN" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][scroll_down]-gestures[gestures][scrolldown]">
+    <onentry>
+      <log label="[sspeech[speech][scroll_down]-gestures[gestures][scrolldown]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][SCROLL_DOWN]')}" />
+      <send event="SCROLL_DOWN" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][show_favorites]">
+    <onentry>
+      <log label="[sspeech[speech][show_favorites]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][show_favorites]" event="timeout-sspeech[speech][show_favorites]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][show_favorites]-final" event="timeout-sspeech[speech][show_favorites]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][show_favorites]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][show_favorites]-final">
+    <onentry>
+      <log label="[speech[speech][show_favorites]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_FAVORITES]')}" />
+      <send event="SHOW_FAVORITES" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][scroll_up]">
+    <onentry>
+      <log label="[sspeech[speech][scroll_up]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][scroll_up]" event="timeout-sspeech[speech][scroll_up]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][scroll_up]-final" event="timeout-sspeech[speech][scroll_up]" />
+    <transition target="sspeech[speech][scroll_up]-gestures[gestures][scrollup]" event="[GESTURES][SCROLLUP]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][scroll_up]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][scroll_up]-final">
+    <onentry>
+      <log label="[speech[speech][scroll_up]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][SCROLL_UP]')}" />
+      <send event="SCROLL_UP" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][scroll_up]-gestures[gestures][scrollup]">
+    <onentry>
+      <log label="[sspeech[speech][scroll_up]-gestures[gestures][scrollup]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][SCROLL_UP]')}" />
+      <send event="SCROLL_UP" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][show_products][sofas]">
+    <onentry>
+      <log label="[sspeech[speech][show_products][sofas]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][show_products][sofas]" event="timeout-sspeech[speech][show_products][sofas]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][show_products][sofas]-final" event="timeout-sspeech[speech][show_products][sofas]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][show_products][sofas]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][show_products][sofas]-final">
+    <onentry>
+      <log label="[speech[speech][show_products][sofas]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SHOW_PRODUCTS][SOFAS]')}" />
+      <send event="SEARCH_PRODUCT_SOFAS" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select_product_by_position][7]">
+    <onentry>
+      <log label="[sspeech[speech][select_product_by_position][7]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][7]" event="timeout-sspeech[speech][select_product_by_position][7]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select_product_by_position][7]-final" event="timeout-sspeech[speech][select_product_by_position][7]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][7]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select_product_by_position][7]-final">
+    <onentry>
+      <log label="[speech[speech][select_product_by_position][7]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][7]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_7" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][affirm]">
+    <onentry>
+      <log label="[sspeech[speech][affirm]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][affirm]" event="timeout-sspeech[speech][affirm]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][affirm]-final" event="timeout-sspeech[speech][affirm]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][affirm]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][affirm]-final">
+    <onentry>
+      <log label="[speech[speech][affirm]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][AFFIRM]')}" />
+      <send event="AFFIRM" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][goback]">
+    <onentry>
+      <log label="[sgestures[gestures][goback]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][goback]" event="timeout-sgestures[gestures][goback]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][goback]-final" event="timeout-sgestures[gestures][goback]" />
+    <transition target="sgestures[gestures][goback]-speech[speech][go_back]" event="[SPEECH][GO_BACK]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][goback]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][goback]-final">
+    <onentry>
+      <log label="[gestures[gestures][goback]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][GO_BACK]')}" />
+      <send event="GO_BACK" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][goback]-speech[speech][go_back]">
+    <onentry>
+      <log label="[sgestures[gestures][goback]-speech[speech][go_back]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][GO_BACK]')}" />
+      <send event="GO_BACK" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sspeech[speech][select_product_by_position][3]">
+    <onentry>
+      <log label="[sspeech[speech][select_product_by_position][3]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sspeech[speech][select_product_by_position][3]" event="timeout-sspeech[speech][select_product_by_position][3]" delay="0" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="speech[speech][select_product_by_position][3]-final" event="timeout-sspeech[speech][select_product_by_position][3]" />
+    <onexit>
+      <cancel sendid="state1-timer-sspeech[speech][select_product_by_position][3]" />
+    </onexit>
+  </state>
+  <state id="speech[speech][select_product_by_position][3]-final">
+    <onentry>
+      <log label="[speech[speech][select_product_by_position][3]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[SPEECH][SELECT_PRODUCT_BY_POSITION][3]')}" />
+      <send event="SELECT_PRODUCT_BY_POSITION_3" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][scrolldown]">
+    <onentry>
+      <log label="[sgestures[gestures][scrolldown]]" expr="READY" />
+      <assign name="data1" expr="${_eventdata.data}" />
+      <send id="state1-timer-sgestures[gestures][scrolldown]" event="timeout-sgestures[gestures][scrolldown]" delay="5000" target="" targettype="" namelist="" />
+    </onentry>
+    <transition target="gestures[gestures][scrolldown]-final" event="timeout-sgestures[gestures][scrolldown]" />
+    <transition target="sgestures[gestures][scrolldown]-speech[speech][scroll_down]" event="[SPEECH][SCROLL_DOWN]" />
+    <onexit>
+      <cancel sendid="state1-timer-sgestures[gestures][scrolldown]" />
+    </onexit>
+  </state>
+  <state id="gestures[gestures][scrolldown]-final">
+    <onentry>
+      <log label="[gestures[gestures][scrolldown]-final]" expr="READY" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[FUSION][SCROLL_DOWN]')}" />
+      <send event="SCROLL_DOWN" target="IM" targettype="MC" namelist="newExtensionNotification" />
+    </onentry>
+    <transition target="main" />
+  </state>
+  <state id="sgestures[gestures][scrolldown]-speech[speech][scroll_down]">
+    <onentry>
+      <log label="[sgestures[gestures][scrolldown]-speech[speech][scroll_down]]" expr="READY" />
+      <assign name="data2" expr="${_eventdata.data}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[FUSION][SCROLL_DOWN]')}" />
+      <send event="SCROLL_DOWN" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>

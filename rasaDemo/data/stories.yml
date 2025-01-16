@@ -73,6 +73,21 @@ stories:
       - intent: main_page
       - action: action_main_page
 
+  - story: Affirm
+    steps:
+      - intent: affirm
+      - action: action_affirm
+    
+  - story: Deny
+    steps:
+      - intent: deny
+      - action: action_deny
+  
+  - story: Selecionar Area
+    steps:
+      - intent: select
+      - action: action_select
+
   - story: Ordenar produtos
     steps:
       - intent: order_products

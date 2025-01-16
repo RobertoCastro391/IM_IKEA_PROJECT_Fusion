@@ -9,20 +9,21 @@ import scxmlgen.interfaces.IModality;
 public enum Gestures implements IModality{
 
 	// ----------------Complementar----------------
-	DELETE("[GESTURES][DELETE]", 1500),
+	REMOVE("[GESTURES][EX]", 5000),
 
 	// ----------------Redundante----------------
-	SCROLL_UP("[GESTURES][SCROLL_UP]", 1500),
-    SCROLL_DOWN("[GESTURES][SCROLL_DOWN]", 1500),
-	GO_BACK("[GESTURES][GO_BACK]", 1500),
-	MAIN_PAGE("[GESTURES][MAIN_PAGE]", 1500),
+	SCROLL_UP("[GESTURES][SCROLLUP]", 5000),
+    SCROLL_DOWN("[GESTURES][SCROLLDOWN]", 5000),
+	GO_BACK("[GESTURES][GOBACK]", 5000),
+	MAIN_PAGE("[GESTURES][MAINPAGE]", 5000),
 
     // ----------------Single----------------
-	GO_UP("[GESTURES][GO_UP]", 1500),
-	GO_DOWN("[GESTURES][GO_DOWN]", 1500),
-	GO_LEFT("[GESTURES][GO_LEFT]", 1500),
-	GO_RIGHT("[GESTURES][GO_RIGHT]", 1500),
-	CLOSE_WEB("[GESTURES][CLOSE_WEB]", 1500),
+	GO_UP("[GESTURES][GOUP]", 5000),
+	GO_DOWN("[GESTURES][GODOWN]", 5000),
+	GO_LEFT("[GESTURES][GOLEFT]", 5000),
+	GO_RIGHT("[GESTURES][GORIGHT]", 5000),
+	CLOSE_WEB("[GESTURES][EXIT]", 5000),
+    SELECT("[GESTURES][SELECT]", 5000),
     ;
 
     

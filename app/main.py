@@ -21,7 +21,7 @@ not_quit = True
 intent_before = ""
 products_retrived = []
 
-intents_list = ["ASK_HELP", "SHOW_PRODUCTS", "OPEN_WEBSITE", "SCROLL_UP", "SCROLL_DOWN", "select_product_by_position", "ADD_TO_CART", "ADD_PRODUCT_FAVORITES", "SHOW_CART", "SHOW_FAVORITES", "remove_cart", "remove_favorites", "GO_BACK", "SHOW_MORE", "finalize_order", "MAIN_PAGE", "order_products"]
+intents_list = ["ASK_HELP", "SHOW_PRODUCTS", "OPEN_WEBSITE", "SCROLL_UP", "SCROLL_DOWN", "SELECT_PRODUCT_BY_POSITION", "ADD_TO_CART", "ADD_TO_FAVORITES", "SHOW_CART", "SHOW_FAVORITES", "remove_cart", "remove_favorites", "GO_BACK", "SHOW_MORE", "FINALIZE_ORDER", "MAIN_PAGE", "CLOSE_WEB", "NLU_FALLBACK", "GO_UP", "GO_DOWN","GO_LEFT", "GO_RIGHT", "EXIT", "order_products"]
 
 driver = None
 
@@ -37,8 +37,8 @@ def open_website():
         # Verifica se o driver já está ativo ou precisa ser reiniciado
         if driver is None or not is_driver_alive():
             # Caminho do driver do Selenium (atualize conforme necessário)
-            service = Service("C:\\Users\\Usuario\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
-            # service = Service("C:\\Users\\rober\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
+            # service = Service("C:\\Users\\Usuario\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
+            service = Service("C:\\Users\\rober\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
             driver = webdriver.Chrome(service=service)
         
         # Abre o site
@@ -153,6 +153,42 @@ def show_product(category, tts):
         )
         search_button.click()
 
+        # Highlight and store the first product
+        time.sleep(3)  # Allow time for the page to load
+
+        # Inject CSS for highlighting
+        driver.execute_script("""
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .selected {
+                    border: 2px solid red;
+                    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+                }
+            `;
+            document.head.appendChild(style);
+        """)
+
+        driver.execute_script("""
+            let selectedDiv = null;
+
+            // Highlight the first product
+            let firstProduct = document.querySelector('div[data-testid="plp-product-card"]');
+            if (firstProduct) {
+                if (selectedDiv) {
+                    selectedDiv.classList.remove('selected');
+                }
+                firstProduct.classList.add('selected');
+                selectedDiv = firstProduct;
+
+                // Store selected product globally
+                window.selectedDiv = selectedDiv;
+
+                firstProduct.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        """)
+
+
     except Exception as e:
             tts("Houve um problema ao realizar a busca no site. Tente novamente mais tarde.")
             print(f"Erro no Selenium: {e}")
@@ -259,6 +295,38 @@ def open_cart(tts):
         driver.get("https://www.ikea.com/pt/pt/shoppingcart/")
         print("O carrinho foi aberto.")
         tts("O carrinho foi aberto.")
+
+
+        # Wait for the page to load and locate the specific product div
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "_product_j61sc_1"))
+        )
+
+        # Inject CSS for highlighting if not already present
+        driver.execute_script("""
+            if (!document.querySelector('style#selection-style')) {
+                const style = document.createElement('style');
+                style.id = 'selection-style';
+                style.type = 'text/css';
+                style.innerHTML = `
+                    .selected {
+                        border: 2px solid red;
+                        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        """)
+
+        # Highlight the specified product div
+        driver.execute_script("""
+            let productDiv = document.querySelector('div._product_j61sc_1');
+            if (productDiv) {
+                productDiv.classList.add('selected'); // Add highlighting
+                productDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll into view
+            }
+        """)
+
     except Exception as e:
         tts("Não foi possível abrir o carrinho.")
         print(f"Erro ao abrir o carrinho: {e}")
@@ -266,28 +334,63 @@ def open_cart(tts):
     return []
 
 def open_favourites(tts):
-
     global driver
     if driver is None:
         print("Driver não foi inicializado.")
         return
 
     try:
+        # Open the IKEA favourites page
         driver.get("https://www.ikea.com/pt/pt/favourites/")
 
+        # Wait for the favourites list to load
         wait = WebDriverWait(driver, 15)
-        select_list_button = wait.until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "button.ListThumbnail_container__tCqlx"))
+        wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "button.ListThumbnail_container__tCqlx"))
         )
+
+        # Click the list thumbnail button
+        select_list_button = driver.find_element(By.CSS_SELECTOR, "button.ListThumbnail_container__tCqlx")
         driver.execute_script("arguments[0].click();", select_list_button)
 
-        print("Os favoritos foram abertos.")
-        tts("Os favoritos foram abertos.")
+        # Wait for the product cards to appear
+        wait.until(
+            EC.presence_of_element_located((By.CLASS_NAME, "ProductCard_listProductCard__sr7fg"))
+        )
+
+        # Highlight the specified product div
+        driver.execute_script("""
+            let productDiv = document.querySelector('div.ProductCard_listProductCard__sr7fg');
+            if (productDiv) {
+                productDiv.classList.add('selected'); // Add highlighting
+                productDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll into view
+            }
+        """)
+
+        # Ensure the CSS for the 'selected' class is added
+        driver.execute_script("""
+            if (!document.querySelector('style#favourites-selection-style')) {
+                const style = document.createElement('style');
+                style.id = 'favourites-selection-style';
+                style.type = 'text/css';
+                style.innerHTML = `
+                    .selected {
+                        border: 2px solid red;
+                        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        """)
+
+        print("Os favoritos foram abertos e o produto foi selecionado.")
+        tts("Os favoritos foram abertos e o produto foi selecionado.")
     except Exception as e:
-        tts("Não foi possível abrir os favoritos.")
+        tts("Não foi possível abrir os favoritos ou selecionar o produto.")
         print(f"Erro ao abrir os favoritos: {e}")
 
     return []
+
 
 def add_to_cart(tts):
 
@@ -637,6 +740,98 @@ def ask_help(tts):
         tts("Desculpe, houve um erro ao tentar fornecer ajuda.")
         print(f"Erro ao fornecer ajuda: {e}")
 
+
+def move_selection(direction, tts):
+    """
+    Moves the selected area in the specified direction (up, down, left, right).
+
+    Args:
+        direction (str): The direction to move ("up", "down", "left", "right").
+        tts (function): Text-to-speech function for feedback.
+    """
+    global driver
+    if driver is None:
+        print("Driver não foi inicializado.")
+        return
+
+    try:
+        # Inject CSS for highlighting if not already present
+        driver.execute_script("""
+            if (!document.querySelector('style#selection-style')) {
+                const style = document.createElement('style');
+                style.id = 'selection-style';
+                style.type = 'text/css';
+                style.innerHTML = `
+                    .selected {
+                        border: 2px solid red;
+                        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        """)
+
+        # Execute JavaScript to move the selection
+        driver.execute_script(f"""
+            (function moveSelection() {{
+                if (window.selectedDiv) {{
+                    const selectedDiv = window.selectedDiv;
+                    const productList = Array.from(document.querySelectorAll('div[data-testid="plp-product-card"]'));
+
+                    if (productList.length === 0) {{
+                        console.error("No products found on the page.");
+                        return;
+                    }}
+
+                    // Calculate grid dimensions
+                    const gridColumns = Math.max(1, Math.floor(window.innerWidth / selectedDiv.offsetWidth));
+                    const index = productList.indexOf(selectedDiv);
+
+                    let newIndex = -1;
+
+                    if (index !== -1) {{
+                        if ('{direction}' === 'left' && index % gridColumns !== 0) {{
+                            // Move to the left
+                            newIndex = index - 1;
+                        }} else if ('{direction}' === 'right' && (index + 1) % gridColumns !== 0) {{
+                            // Move to the right
+                            newIndex = index + 1;
+                        }} else if ('{direction}' === 'up' && index - gridColumns >= 0) {{
+                            // Move up
+                            newIndex = index - gridColumns;
+                        }} else if ('{direction}' === 'down' && index + gridColumns < productList.length) {{
+                            // Move down
+                            newIndex = index + gridColumns;
+                        }}
+
+                        if (newIndex !== -1 && productList[newIndex]) {{
+                            const newSelectedDiv = productList[newIndex];
+
+                            // Update classes
+                            selectedDiv.classList.remove('selected');
+                            newSelectedDiv.classList.add('selected');
+
+                            // Scroll into view
+                            newSelectedDiv.scrollIntoView({{ behavior: "smooth", block: "center" }});
+
+                            // Update global reference
+                            window.selectedDiv = newSelectedDiv;
+                        }} else {{
+                            console.log("No valid movement for direction: {direction}");
+                        }}
+                    }}
+                }} else {{
+                    console.error("No selectedDiv found.");
+                }}
+            }})();
+        """)
+
+        tts(f"Movendo o produto para {direction}.")
+        print(f"Moved the selection {direction}.")
+    except Exception as e:
+        tts(f"Houve um problema ao mover para {direction}. Tente novamente.")
+        print(f"Erro ao mover para {direction}: {e}")
+
     
 async def voice_message_handler(message, tts):
     # Processa a mensagem e extrai o intent
@@ -652,6 +847,10 @@ async def voice_message_handler(message, tts):
         return "OK"
     
     elif intent in intents_list:
+
+        if intent == "ASK_HELP":
+            print("Pedindo ajuda...")
+            ask_help(tts)
         
         if intent == "OPEN_WEBSITE":
             print("Abrindo o site...")
@@ -696,106 +895,103 @@ async def voice_message_handler(message, tts):
         elif intent == "SHOW_MORE":
             print("A mostrar mais produtos")
             show_more(tts)
+
+        else:
+            print(f"Intent não reconhecido: {intent}")
+            tts("Por favor repita o comando!")
+
+async def gestures_message_handler(message, tts):
     
-    # if message == "OK":
-    #     return "OK"
-    # elif  message["intent"]["name"] in intents_list:
-    #     intent = message["intent"]["name"]
-    #     confidence = message["intent"]["confidence"]
-    #     print(f"Intent: {intent} com confiança: {confidence}")
-    #     if message["intent"]["confidence"] < 0.7:
-    #         tts("Por favor repita o comando!")
+    print(f"Message: {message}")
 
-    #     # Verifica o intent e executa a ação correspondente
-    #     elif intent == "open_website":
-    #         # Se o intent for "open_website", chama a função para abrir o site
-    #         print("Abrindo o site...")
-    #         tts("A abrir o site da IKEA PORTUGAL")
-    #         open_website()
+    if message['recognized'][1]:
+        intent = message['recognized'][1]
+        print(f"Intent: {intent}")
+    
 
-    #     elif intent == "show_products":
-    #         # Aqui você pode adicionar lógica para mostrar produtos, etc.
-    #         category = message['entities'][0]['value']
-    #         print(f"Mostrando produtos de {category} ...")
-    #         # Chame a função que exibe produtos aqui, por exemplo
-    #         show_product(category, tts)
+    if message == "OK":
+        return "OK"
 
-    #     elif intent == "scroll_down":
-    #         # Se o intent for "scroll_up", chama a função para rolar para cima
-    #         print("A descer a pagina")
-    #         tts("A descer a página")
-    #         scroll_down()
+    elif intent in intents_list:
 
-    #     elif intent == "scroll_up":
-    #         # Se o intent for "scroll_up", chama a função para rolar para cima
-    #         print("A subir a pagina")
-    #         tts("A subir a página")
-    #         scroll_up()
-
-    #     elif intent == "select_product_by_position":
-    #         position = message['entities'][0]['value']
-    #         print(f"A selecionar o producto na posição {position}..")
-    #         select_product_by_positions(position, tts)
+        if intent == "SCROLL_DOWN":
+            print("A descer a pagina")
+            tts("A descer a página")
+            scroll_down()
         
-    #     elif intent == "show_cart":
-    #         print("A abrir ao carrinho...")
-    #         open_cart(tts)
+        elif intent == "SCROLL_UP":
+            print("A subir a pagina")
+            tts("A subir a página")
+            scroll_up()
 
-    #     elif intent == "show_favorites":
-    #         print("A abrir os favoritos...")
-    #         open_favourites(tts)
+        elif intent == "GO_BACK":
+            print("A voltar para trás")
+            go_back(tts)
 
-    #     elif intent == "add_to_cart":
-    #         print("A adicionar ao carrinho...")
-    #         add_to_cart(tts)
+        elif intent == "MAIN_PAGE":
+            print("Voltar à Página Inicial")
+            main_page(tts)
         
-    #     elif intent == "add_to_favorites":
-    #         print("A adicionar aos favoritos...")
-    #         add_to_favorites(tts)
-
-    #     elif intent == "remove_cart":
-    #         print("A remover produto do carrinho...")
-    #         position = message['entities'][0]['value']
-    #         remove_from_cart(position, tts)
-
-    #     elif intent == "remove_favorites":
-    #         print("A remover produto dos favoritos...")
-    #         position = message['entities'][0]['value']
-    #         remove_from_favorites(position,tts)
+        elif intent == "GO_UP":
+            print("A Mover Area Selecionada para Cima")
+            move_selection("up", tts)
         
-    #     elif intent == "go_back":
-    #         print("A voltar para trás")
-    #         go_back(tts)
+        elif intent == "GO_DOWN":
+            print("A Mover Area Selecionada para Baixo")
+            move_selection("down", tts)
 
-    #     elif intent == "show_more":
-    #         print("A mostrar mais produtos")
-    #         show_more(tts)
+        elif intent == "GO_LEFT":
+            print("A Mover Area Selecionada para Left")
+            move_selection("left", tts)
 
-    #     elif intent == "finalize_order":
-    #         print("A finalizar a encomenda")
-    #         finalize_order(tts)
+        elif intent == "GO_RIGHT":
+            print("A Mover Area Selecionada para Right")
+            move_selection("right", tts)
 
-    #     elif intent == "main_page":
-    #         print("Voltar à Página Inicial")
-    #         main_page(tts)
+        elif intent == "EXIT":
+            print("A Fechar o Navegador")
+            close_driver()
 
-    #     elif intent == "order_products":
-    #         print("Ordenar Produtos")
-    #         criterio = message['entities'][0]['value']
-    #         order_products(criterio, tts)
-    #     elif intent == "ask_help":
-    #         print ("Ajuda")
-    #         ask_help(tts)
+        else:
+            print(f"Intent não reconhecido: {intent}")
+            tts("Por favor repita o comando!")
+
+
+async def fusion_message_handler(message, tts):
+    
+    print(f"Message: {message}")
+
+    if message['recognized'][1]:
+        intent = message['recognized'][1]
+        print(f"Intent: {intent}")
+    
+
+    if message == "OK":
+        return "OK"
+
+    elif intent in intents_list:
+
+        if intent == "SCROLL_DOWN":
+            print("A descer a pagina")
+            tts("A descer a página")
+            scroll_down()
         
-    #     # Adicione outros intents conforme necessário, como scroll, add_to_cart, etc.
-        
-    #     else:
-    #         print(f"Intent não reconhecido: {intent}")
-    #         tts("Por favor repita o comando!")
-    # else:
-    #     print(f"Intent não reconhecido: {intent}")
-    #     tts("Por favor repita o comando!")
+        elif intent == "SCROLL_UP":
+            print("A subir a pagina")
+            tts("A subir a página")
+            scroll_up()
 
+        elif intent == "GO_BACK":
+            print("A voltar para trás")
+            go_back(tts)
+        
+        elif intent == "MAIN_PAGE":
+            print("Voltar à Página Inicial")
+            main_page(tts)
+    
+        else:
+            print(f"Intent não reconhecido: {intent}")
+            tts("Por favor repita o comando!")
 
 async def message_handler(message:str, tts):
     
@@ -812,8 +1008,9 @@ async def message_handler(message:str, tts):
         print(f"Gesture command received: {message}")
         await gestures_message_handler(message, tts)
 
-    # elif status == "fusion":
-    #     await fusion_handler(game=game, command=message)
+    elif status == "fusion":
+        await fusion_message_handler(message, tts)
+
     else:
         return "OK"
 
@@ -833,8 +1030,8 @@ def process_message(message):
                 command = json.loads(json_command)
                 return command, "voice"
             elif "FUSION" == modalidade:
-                command = recognized[1]
-                return command, "fusion"
+                command = json.loads(json_command)
+                return command, "fusion"    
             else:
                 print("Not recognized")
                 print(f"Modalities: {modalidade}")
