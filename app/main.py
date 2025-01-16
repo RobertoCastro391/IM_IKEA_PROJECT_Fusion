@@ -37,8 +37,8 @@ def open_website():
         # Verifica se o driver já está ativo ou precisa ser reiniciado
         if driver is None or not is_driver_alive():
             # Caminho do driver do Selenium (atualize conforme necessário)
-            # service = Service("C:\\Users\\Usuario\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
-            service = Service("C:\\Users\\rober\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
+            service = Service("C:\\Users\\Usuario\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
+            # service = Service("C:\\Users\\rober\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
             driver = webdriver.Chrome(service=service)
         
         # Abre o site
@@ -808,8 +808,10 @@ async def message_handler(message:str, tts):
         print(f"Voice command received: {message}")
         await voice_message_handler(message, tts)
 
-    # elif status == "gesture":
-    #     await gesture_handler(game=game, gesture=message)
+    elif status == "gesture":
+        print(f"Gesture command received: {message}")
+        await gestures_message_handler(message, tts)
+
     # elif status == "fusion":
     #     await fusion_handler(game=game, command=message)
     else:
