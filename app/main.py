@@ -10,6 +10,9 @@ from selenium.webdriver.common.keys import Keys
 import unicodedata
 import time
 
+import webbrowser
+import os
+
 from os import system
 import xml.etree.ElementTree as ET
 import ssl
@@ -21,7 +24,7 @@ not_quit = True
 intent_before = ""
 products_retrived = []
 
-intents_list = ["ASK_HELP", "SHOW_PRODUCTS", "OPEN_WEBSITE", "SCROLL_UP", "SCROLL_DOWN", "SELECT_PRODUCT_BY_POSITION", "ADD_TO_CART", "ADD_TO_FAVORITES", "SHOW_CART", "SHOW_FAVORITES", "remove_cart", "remove_favorites", "GO_BACK", "SHOW_MORE", "FINALIZE_ORDER", "MAIN_PAGE", "CLOSE_WEB", "NLU_FALLBACK", "GO_UP", "GO_DOWN","GO_LEFT", "GO_RIGHT", "EXIT", "order_products"]
+intents_list = ["ASK_HELP", "SHOW_PRODUCTS", "OPEN_WEBSITE", "SCROLL_UP", "SCROLL_DOWN", "SELECT_PRODUCT_BY_POSITION", "ADD_TO_CART", "ADD_TO_FAVORITES", "SHOW_CART", "SHOW_FAVORITES", "REMOVE", "remove_cart", "remove_favorites", "GO_BACK", "SHOW_MORE", "FINALIZE_ORDER", "MAIN_PAGE", "CLOSE_WEB", "NLU_FALLBACK", "GO_UP", "GO_DOWN","GO_LEFT", "GO_RIGHT", "EXIT", "SELECT", "ORDER_PRODUCTS"]
 
 driver = None
 
@@ -37,8 +40,8 @@ def open_website():
         # Verifica se o driver já está ativo ou precisa ser reiniciado
         if driver is None or not is_driver_alive():
             # Caminho do driver do Selenium (atualize conforme necessário)
-            # service = Service("C:\\Users\\Usuario\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
-            service = Service("C:\\Users\\rober\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
+            service = Service("C:\\Users\\Usuario\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
+            # service = Service("C:\\Users\\rober\\Downloads\\chromedriver-win64\\chromedriver.exe")  # Atualize para o caminho correto
             driver = webdriver.Chrome(service=service)
         
         # Abre o site
@@ -85,7 +88,7 @@ def show_product(category, tts):
     try:
             
         print("A iniciar pedido:")
-        tts(f"A procurar por {category} no site da IKEA Portugal")
+        tts(f"A procurar por {category}!")
             
         # Conexão com a API do IKEA
         conn = http.client.HTTPSConnection("ikea-api.p.rapidapi.com")
@@ -136,7 +139,7 @@ def show_product(category, tts):
 
         driver.execute_script("window.scrollTo({ top: 0, behavior: 'smooth' });")
 
-        time.sleep(2)
+        time.sleep(1)
 
         # Localiza o campo de busca
         wait = WebDriverWait(driver, 10)
@@ -154,7 +157,7 @@ def show_product(category, tts):
         search_button.click()
 
         # Highlight and store the first product
-        time.sleep(3)  # Allow time for the page to load
+        time.sleep(1)  # Allow time for the page to load
 
         # Inject CSS for highlighting
         driver.execute_script("""
@@ -207,13 +210,14 @@ def is_driver_alive() -> bool:
         close_driver()  # Fecha o driver se não estiver mais ativo
         return False
 
-def close_driver():
+def close_driver(tts):
     """
     Fecha o driver se ele estiver inicializado.
     """
     global driver
     if driver:
         try:
+            tts("A fechar o IKEA! Volte Sempre!")
             driver.quit()  # Fecha o driver do Selenium
         except Exception:
             pass  # Ignora exceções durante o fechamento
@@ -252,61 +256,29 @@ def scroll_up():
     
     except Exception as e:
         print(f"Houve um problema ao rolar a página: {e}")
-
-def select_product_by_positions(position, tts):
-
-    global driver
-    if driver is None:
-        print("Driver não foi inicializado.")
-        return
-    
-            # Verifica se a posição foi fornecida e é válida
-    if not position:
-        tts("Desculpe, não entendi a posição do produto que você quer.")
-        return []
-
-    try:
-        # Converte a posição para inteiro
-        position = int(position) - 1  # Subtrai 1 para ajustar ao índice da lista (começa em 0)
-        print(f"Selecionando produto na posição {position + 1}...")
-        
-        product_retrived = products_retrived[position]
-        print(product_retrived)
-        driver.get(product_retrived['url'])
-        tts(
-            f"Selecionei o produto na posição {position + 1}, {products_retrived['name']}!."
-        )
-    except ValueError:
-        tts("Por favor, informe um número válido para a posição.")
-    except Exception as e:
-        tts("Houve um problema ao selecionar o produto. Tente novamente mais tarde.")
-        print(f"Erro ao selecionar produto: {e}")
-
-    return []
     
 def open_cart(tts):
-
     global driver
     if driver is None:
         print("Driver não foi inicializado.")
         return
 
     try:
+        # Open the IKEA shopping cart page
         driver.get("https://www.ikea.com/pt/pt/shoppingcart/")
         print("O carrinho foi aberto.")
         tts("O carrinho foi aberto.")
 
-
-        # Wait for the page to load and locate the specific product div
+        # Wait for the page to load and locate the product container
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, "_product_j61sc_1"))
         )
 
         # Inject CSS for highlighting if not already present
         driver.execute_script("""
-            if (!document.querySelector('style#selection-style')) {
+            if (!document.querySelector('style#cart-selection-style')) {
                 const style = document.createElement('style');
-                style.id = 'selection-style';
+                style.id = 'cart-selection-style';
                 style.type = 'text/css';
                 style.innerHTML = `
                     .selected {
@@ -318,15 +290,19 @@ def open_cart(tts):
             }
         """)
 
-        # Highlight the specified product div
+        # Highlight and store the first product div
         driver.execute_script("""
             let productDiv = document.querySelector('div._product_j61sc_1');
             if (productDiv) {
                 productDiv.classList.add('selected'); // Add highlighting
                 productDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll into view
+                
+                // Store the selectedDiv globally for future operations
+                window.selectedDiv = productDiv;
             }
         """)
 
+        print("O carrinho foi aberto e o primeiro produto foi selecionado!")
     except Exception as e:
         tts("Não foi possível abrir o carrinho.")
         print(f"Erro ao abrir o carrinho: {e}")
@@ -358,15 +334,6 @@ def open_favourites(tts):
             EC.presence_of_element_located((By.CLASS_NAME, "ProductCard_listProductCard__sr7fg"))
         )
 
-        # Highlight the specified product div
-        driver.execute_script("""
-            let productDiv = document.querySelector('div.ProductCard_listProductCard__sr7fg');
-            if (productDiv) {
-                productDiv.classList.add('selected'); // Add highlighting
-                productDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll into view
-            }
-        """)
-
         # Ensure the CSS for the 'selected' class is added
         driver.execute_script("""
             if (!document.querySelector('style#favourites-selection-style')) {
@@ -383,8 +350,21 @@ def open_favourites(tts):
             }
         """)
 
-        print("Os favoritos foram abertos e o produto foi selecionado.")
-        tts("Os favoritos foram abertos e o produto foi selecionado.")
+        # Highlight and store the first product div
+        driver.execute_script("""
+            let productDiv = document.querySelector('div.ProductCard_listProductCard__sr7fg');
+            
+            if (productDiv) {
+                productDiv.classList.add('selected'); // Add highlighting
+                productDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll into view
+                
+                // Store the selectedDiv globally for future operations
+                window.selectedDiv = productDiv;
+            }
+        """)
+
+        print("A lista dos favoritos foi aberta e o primeiro produto foi selecionado!")
+        tts("A lista dos favoritos foi aberta!")
     except Exception as e:
         tts("Não foi possível abrir os favoritos ou selecionar o produto.")
         print(f"Erro ao abrir os favoritos: {e}")
@@ -447,64 +427,6 @@ def add_to_favorites(tts):
 
     return []
 
-def remove_from_cart(position, tts):
-
-    global driver
-    if driver is None:
-        print("Driver não foi inicializado.")
-        return
-    
-    try:
-        # Localiza o botão de remover do carrinho
-        wait = WebDriverWait(driver, 15)
-        buttons = wait.until(EC.presence_of_all_elements_located(
-            (By.XPATH, "//button[contains(@aria-label, 'Remover produto')]"))
-        )
-
-        print(f"Botões de remover do carrinho: {len(buttons)}")
-
-        if 0 < int(position) <= len(buttons):
-            print(f"A clicar no botão {position} de remover do carrinho...")
-            buttons[int(position) - 1].click()
-            tts("O produto foi removido do carrinho.")
-        else:
-            tts("A posição fornecida não é válida.")
-            print("Erro: Posição fora do intervalo.")
-
-    except Exception as e:
-        tts("Não foi possível remover o produto do carrinho.")
-        print(f"Erro ao remover do carrinho: {e}")
-    
-    return []
-
-def remove_from_favorites(position, tts):
-
-    global driver
-    if driver is None:
-        print("Driver não foi inicializado.")
-        return
-
-    try:
-        wait = WebDriverWait(driver, 15)
-        
-        # Encontra todos os botões de remover dos favoritos
-        buttons = wait.until(EC.presence_of_all_elements_located(
-            (By.CSS_SELECTOR, "button[aria-label^='Remover']"))
-        )
-
-        if 0 < int(position) <= len(buttons):
-            print(f"A clicar no botão {position} de remover dos favoritos...")
-            buttons[int(position) - 1].click()
-            tts("O produto foi removido dos favoritos.")
-        else:
-            tts("A posição fornecida não é válida.")
-            print("Erro: Posição fora do intervalo.")
-    except Exception as e:
-        tts("Não foi possível remover o produto dos favoritos.")
-        print(f"Erro ao remover dos favoritos: {e}")
-    
-    return []
-
 def go_back(tts):
     """
     Função para voltar à página anterior no navegador.
@@ -518,6 +440,75 @@ def go_back(tts):
     try:
         # Comando do Selenium para voltar à página anterior
         driver.back()
+
+        time.sleep(1)  # Espera para a página carregar
+        current_url = driver.current_url.lower()
+
+
+        # Inject CSS for highlighting
+        driver.execute_script("""
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .selected {
+                    border: 2px solid red;
+                    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+                }
+            `;
+            document.head.appendChild(style);
+        """)
+
+    
+        if "search" in current_url or "products" in current_url:
+            driver.execute_script("""
+                let selectedDiv = null;
+
+                // Highlight the first product
+                let firstProduct = document.querySelector('div[data-testid="plp-product-card"]');
+                if (firstProduct) {
+                    if (selectedDiv) {
+                        selectedDiv.classList.remove('selected');
+                    }
+                    firstProduct.classList.add('selected');
+                    selectedDiv = firstProduct;
+
+                    // Store selected product globally
+                    window.selectedDiv = selectedDiv;
+
+                    firstProduct.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            """)
+            
+
+        elif "favourites" in current_url or "favorites" in current_url:
+
+            # Highlight and store the first product div
+            driver.execute_script("""
+                let productDiv = document.querySelector('div.ProductCard_listProductCard__sr7fg');
+                
+                if (productDiv) {
+                    productDiv.classList.add('selected'); // Add highlighting
+                    productDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll into view
+                    
+                    // Store the selectedDiv globally for future operations
+                    window.selectedDiv = productDiv;
+                }
+            """)
+
+        elif "shoppingcart" in current_url or "cart" in current_url:
+
+            # Highlight and store the first product div
+            driver.execute_script("""
+                let productDiv = document.querySelector('div._product_j61sc_1');
+                if (productDiv) {
+                    productDiv.classList.add('selected'); // Add highlighting
+                    productDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll into view
+                    
+                    // Store the selectedDiv globally for future operations
+                    window.selectedDiv = productDiv;
+                }
+            """)
+
         print("Página anterior.")
         tts("Página anterior.")
     except Exception as e:
@@ -601,7 +592,7 @@ def main_page(tts):
         # Navega para a página inicial
         driver.get(homepage_url)
         print("Voltando à página inicial.")
-        tts("Voltando à página inicial do site.")
+        tts("A voltar à página inicial do site.")
     except Exception as e:
         tts("Não foi possível voltar à página inicial.")
         print(f"Erro ao voltar à página inicial: {e}")
@@ -706,42 +697,46 @@ def order_products(criterio, tts):
         tts("Não foi possível ordenar os produtos.")
         print(f"Erro ao ordenar produtos: {e}")
 
+import os
+
 def ask_help(tts):
+    """
+    Opens a help HTML file in the same browser window controlled by the driver and provides help messages via TTS.
+    """
+    global driver
+    if driver is None:
+        print("Driver não foi inicializado.")
+        tts("O navegador não foi inicializado. Não é possível exibir a ajuda.")
+        return
+
     try:
-        # Respostas diretas e simplificadas para o usuário
-        help_messages = {
-            'open_website': "Para abrir o site, diga 'Abre o site' ou 'Vamos às compras'.",
-            'show_products': "Você pode me dizer 'Quero ver cadeiras' ou 'Mostra-me sofás' para ver os produtos.",
-            'add_to_cart': "Para adicionar um produto ao carrinho, diga 'Adiciona o produto ao carrinho'.",
-            'add_to_favorites': "Para salvar um produto nos favoritos, diga 'Adiciona aos favoritos'.",
-            'show_cart': "Para ver seu carrinho, diga 'Mostrar-me o carrinho' ou 'Quero ver o meu carrinho'.",
-            'remove_cart': "Se quiser remover algo do carrinho, diga 'Remove o produto número 1 do carrinho'.",
-            'remove_favorites': "Para remover um item dos favoritos, diga 'Remove o produto número 1 dos favoritos'.",
-            'go_back': "Para voltar à página anterior, diga 'Volta para trás'.",
-            'main_page': "Para voltar à página inicial, diga 'Voltar à página inicial'.",
-            'order_products': "Você pode ordenar os produtos por preço ou por popularidade, por exemplo, 'Ordena por preço', entre outros.",
-            'scroll_up': "Para subir a página, diga 'Suba' ou 'Sobe para cima'.",
-            'scroll_down': "Para descer a página, diga 'Desça' ou 'Desce para baixo'.",
-            'show_more': "Para ver mais opções, diga 'Quero ver mais'.",
-            'finalize_order': "Quando quiser finalizar a compra, diga 'Finaliza a compra' ou 'Procede para o checkout' dentro do carrinho."
-        }
+        # Path to the HTML file
+        help_file_path = os.path.join(os.getcwd(), "help", "help.html")  # Adjust the path as needed
 
-        # Escolhe uma mensagem aleatória ou a mais relevante
-        message = "Aqui estão algumas coisas que você pode fazer:"
+        # Check if the file exists
+        if not os.path.exists(help_file_path):
+            raise FileNotFoundError(f"Help file not found at {help_file_path}")
 
-        for key in help_messages:
-            message += f"\n- {help_messages[key]}"
+        # Convert the file path to a file:// URL
+        file_url = f"file://{help_file_path}"
 
-        # Envia a mensagem
-        tts(message)
+        # Open the HTML file in the current browser window
+        driver.get(file_url)
+
+        # Provide an additional message via TTS
+        tts("Abri o arquivo de ajuda no navegador. Confira as instruções exibidas.")
+        print("Help file opened successfully in the current browser window.")
+
+    except FileNotFoundError as fnf_error:
+        tts("Desculpe, o arquivo de ajuda não foi encontrado.")
+        print(fnf_error)
 
     except Exception as e:
-        # Se houver algum erro, exibe uma mensagem genérica
         tts("Desculpe, houve um erro ao tentar fornecer ajuda.")
-        print(f"Erro ao fornecer ajuda: {e}")
+        print(f"Erro ao abrir o arquivo de ajuda: {e}")
 
-
-def move_selection(direction, tts):
+## Funciona no produtos e nao nos outros
+def move_selection_products(direction, tts):
     """
     Moves the selected area in the specified direction (up, down, left, right).
 
@@ -825,12 +820,235 @@ def move_selection(direction, tts):
                 }}
             }})();
         """)
+        print(f"Moved the selection {direction}.")
 
-        tts(f"Movendo o produto para {direction}.")
+    except Exception as e:
+        tts(f"Houve um problema ao mover para {direction}. Tente novamente.")
+        print(f"Erro ao mover para {direction}: {e}")
+
+## Funciona nos favoritos e nos outro nao
+def move_selection_favorites(direction, tts):
+    """
+    Moves the selected area in the specified direction (up, down, left, right).
+
+    Args:
+        direction (str): The direction to move ("up", "down", "left", "right").
+        tts (function): Text-to-speech function for feedback.
+    """
+    global driver
+    if driver is None:
+        print("Driver não foi inicializado.")
+        return
+
+    try:
+        # Inject CSS for highlighting if not already present
+        driver.execute_script("""
+            if (!document.querySelector('style#selection-style')) {
+                const style = document.createElement('style');
+                style.id = 'selection-style';
+                style.type = 'text/css';
+                style.innerHTML = `
+                    .selected {
+                        border: 2px solid red;
+                        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        """)
+
+        # Execute JavaScript to move the selection
+        driver.execute_script(f"""
+            (function moveSelection() {{
+                if (window.selectedDiv) {{
+                    const selectedDiv = window.selectedDiv;
+
+                    // Determine the container and product list
+                    const container = document.querySelector('ul.ProductList_marginBottom__s_0MQ') || 
+                                      document.querySelector('div[data-testid="product-list"]') || 
+                                      document.querySelector('div._product_j61sc_1');
+
+                    if (!container) {{
+                        console.error("No valid product container found.");
+                        return;
+                    }}
+
+                    // Gather all product items in the container
+                    const productList = Array.from(container.querySelectorAll('.ProductCard_listProductCard__sr7fg, ._product_j61sc_1'));
+                    
+                    if (productList.length === 0) {{
+                        console.error("No products found in the container.");
+                        return;
+                    }}
+
+                    // Get the index of the currently selected div
+                    const index = productList.indexOf(selectedDiv);
+
+                    if (index === -1) {{
+                        console.error("Selected div not found in the product list.");
+                        return;
+                    }}
+
+                    let newIndex = -1;
+
+                    // Determine the new index based on the direction
+                    if ('{direction}' === 'up' && index > 0) {{
+                        newIndex = index - 1;
+                    }} else if ('{direction}' === 'down' && index < productList.length - 1) {{
+                        newIndex = index + 1;
+                    }} else if ('{direction}' === 'left' && index > 0) {{
+                        newIndex = index - 1;
+                    }} else if ('{direction}' === 'right' && index < productList.length - 1) {{
+                        newIndex = index + 1;
+                    }}
+
+                    if (newIndex !== -1) {{
+                        const newSelectedDiv = productList[newIndex];
+
+                        // Update classes
+                        selectedDiv.classList.remove('selected');
+                        newSelectedDiv.classList.add('selected');
+
+                        // Scroll into view
+                        newSelectedDiv.scrollIntoView({{ behavior: "smooth", block: "center" }});
+
+                        // Update global reference
+                        window.selectedDiv = newSelectedDiv;
+                    }} else {{
+                        console.log("No valid movement for direction: {direction}");
+                    }}
+                }} else {{
+                    console.error("No selectedDiv found.");
+                }}
+            }})();
+        """)
         print(f"Moved the selection {direction}.")
     except Exception as e:
         tts(f"Houve um problema ao mover para {direction}. Tente novamente.")
         print(f"Erro ao mover para {direction}: {e}")
+
+
+def select(tts):
+    """
+    Selects the product name link or span within the currently highlighted product or item.
+
+    Args:
+        tts (function): Text-to-speech function for feedback.
+    """
+    global driver
+    if driver is None:
+        print("Driver não foi inicializado.")
+        return
+
+    try:
+        # Locate and click the target span or link within the selected product
+        clicked = driver.execute_script("""
+            if (window.selectedDiv) {
+                const selectedDiv = window.selectedDiv;
+
+                // List of selectors to identify the target element
+                const selectors = [
+                    'span.cart-ingka-price-module__name-decorator > a',
+                    'span.plp-price-module__name-decorator > span',
+                    'span.list-ingka-price-module__name-decorator > a'
+                ];
+
+                let targetElement = null;
+
+                // Loop through selectors to find a matching element
+                for (const selector of selectors) {
+                    targetElement = selectedDiv.querySelector(selector);
+                    if (targetElement) break;
+                }
+
+                if (targetElement) {
+                    // Log the found element for debugging
+                    console.log("Target element found:", targetElement);
+
+                    targetElement.click();
+                    return true; // Indicate success
+                } else {
+                    console.error("Target element not found inside the selected product div.");
+                    return false; // Indicate failure
+                }
+            } else {
+                console.error("No selectedDiv found.");
+                return false; // Indicate failure
+            }
+        """)
+
+        if clicked:
+            tts("O produto foi selecionado.")
+            print("The product has been selected.")
+        else:
+            tts("Não foi possível encontrar o nome do produto para selecionar.")
+            print("Product name element not found.")
+    except Exception as e:
+        tts("Não foi possível selecionar o produto.")
+        print(f"Erro ao selecionar o produto: {e}")
+
+
+def remove(tts):
+    """
+    Removes the currently highlighted product by clicking the associated decrement or trash button.
+
+    Args:
+        tts (function): Text-to-speech function for feedback.
+    """
+    global driver
+    if driver is None:
+        print("Driver não foi inicializado.")
+        return
+
+    try:
+        # Execute JavaScript to locate and click the decrement or trash button for the selected product
+        removed = driver.execute_script("""
+            if (window.selectedDiv) {
+                const selectedDiv = window.selectedDiv;
+
+                // Log the selectedDiv for debugging
+                console.log("Selected div:", selectedDiv);
+
+                // Attempt to find the decrement or trash button within the selected product
+                const removeButtons = [
+                    'button.cart-ingka-btn--icon-tertiary.cart-ingka-quantity-stepper__decrease',
+                    'button.list-ingka-btn--icon-tertiary.list-ingka-quantity-stepper__decrease'
+                ];
+                let trashButton = null;
+
+                // Loop through selectors to find the button
+                for (const selector of removeButtons) {
+                    trashButton = selectedDiv.querySelector(selector);
+                    if (trashButton) break;
+                }
+
+                if (trashButton) {
+                    // Log the found button for debugging
+                    console.log("Remove button found:", trashButton);
+
+                    trashButton.click();
+                    return true;  // Indicate success
+                } else {
+                    console.error("Remove button not found inside the selected product div.");
+                    return false;  // Indicate failure
+                }
+            } else {
+                console.error("No selectedDiv found.");
+                return false;  // Indicate failure
+            }
+        """)
+
+        if removed:
+            tts("O produto foi removido.")
+            print("The product has been removed.")
+        else:
+            tts("Não foi possível encontrar o botão de remoção.")
+            print("Remove button not found.")
+    except Exception as e:
+        tts("Não foi possível remover o produto.")
+        print(f"Erro ao remover o produto: {e}")
+
+
 
     
 async def voice_message_handler(message, tts):
@@ -854,7 +1072,7 @@ async def voice_message_handler(message, tts):
         
         if intent == "OPEN_WEBSITE":
             print("Abrindo o site...")
-            tts("A abrir o site da IKEA PORTUGAL")
+            tts("A abrir o site da IKEA!")
             open_website()
 
         elif intent == "SHOW_FAVORITES":
@@ -869,7 +1087,7 @@ async def voice_message_handler(message, tts):
             print("A adicionar ao carrinho...")
             add_to_cart(tts)
 
-        elif intent == "ADD_PRODUCT_FAVORITES":
+        elif intent == "ADD_TO_FAVORITES":
             print("A adicionar aos favoritos...")
             add_to_favorites(tts)
 
@@ -895,6 +1113,15 @@ async def voice_message_handler(message, tts):
         elif intent == "SHOW_MORE":
             print("A mostrar mais produtos")
             show_more(tts)
+
+        elif intent == "FINALIZE_ORDER":
+            print("A finalizar a compra")
+            finalize_order(tts)
+
+        elif intent == "ORDER_PRODUCTS":
+            criterio = message['recognized'][2]
+            print(f"Ordenando produtos por {criterio}")
+            order_products(criterio, tts)
 
         else:
             print(f"Intent não reconhecido: {intent}")
@@ -933,24 +1160,78 @@ async def gestures_message_handler(message, tts):
             main_page(tts)
         
         elif intent == "GO_UP":
-            print("A Mover Area Selecionada para Cima")
-            move_selection("up", tts)
+            print("A Mover Área Selecionada para Cima")
+
+            # Check the URL and call the appropriate function
+            current_url = driver.current_url.lower()
+
+            print(f"Current URL: {current_url}")
+
+            if "search" in current_url or "products" in current_url:
+                # If the URL indicates a search or products page
+                move_selection_products("up", tts)
+            elif "favourites" in current_url or "favorites" in current_url:
+                # If the URL indicates a favorites page
+                move_selection_favorites("up", tts)
+            else:
+                print("Página desconhecida. Nenhuma ação realizada.")
+                tts("Não foi possível determinar a página para mover para cima.")
         
         elif intent == "GO_DOWN":
             print("A Mover Area Selecionada para Baixo")
-            move_selection("down", tts)
+            
+            # Check the URL and call the appropriate function
+            current_url = driver.current_url.lower()
+
+            print(f"Current URL: {current_url}")
+
+            if "search" in current_url or "products" in current_url:
+                # If the URL indicates a search or products page
+                move_selection_products("down", tts)
+            elif "favourites" in current_url or "favorites" in current_url:
+                # If the URL indicates a favorites page
+                move_selection_favorites("down", tts)
+            else:
+                print("Página desconhecida. Nenhuma ação realizada.")
+                tts("Não foi possível determinar a página para mover para baixo.")
 
         elif intent == "GO_LEFT":
             print("A Mover Area Selecionada para Left")
-            move_selection("left", tts)
+            # Check the URL and call the appropriate function
+            current_url = driver.current_url.lower()
+
+            print(f"Current URL: {current_url}")
+
+            if "search" in current_url or "products" in current_url:
+                # If the URL indicates a search or products page
+                move_selection_products("left", tts)
+            elif "favourites" in current_url or "favorites" in current_url:
+                # If the URL indicates a favorites page
+                move_selection_favorites("left", tts)
+            else:
+                print("Página desconhecida. Nenhuma ação realizada.")
+                tts("Não foi possível determinar a página para mover para baixo.")
 
         elif intent == "GO_RIGHT":
             print("A Mover Area Selecionada para Right")
-            move_selection("right", tts)
+            # Check the URL and call the appropriate function
+            current_url = driver.current_url.lower()
+
+            print(f"Current URL: {current_url}")
+
+            if "search" in current_url or "products" in current_url:
+                # If the URL indicates a search or products page
+                move_selection_products("right", tts)
+            elif "favourites" in current_url or "favorites" in current_url:
+                # If the URL indicates a favorites page
+                move_selection_favorites("right", tts)
+            else:
+                print("Página desconhecida. Nenhuma ação realizada.")
+                tts("Não foi possível determinar a página para mover para baixo.")
 
         elif intent == "EXIT":
             print("A Fechar o Navegador")
-            close_driver()
+            close_driver(tts)
 
         else:
             print(f"Intent não reconhecido: {intent}")
@@ -988,6 +1269,14 @@ async def fusion_message_handler(message, tts):
         elif intent == "MAIN_PAGE":
             print("Voltar à Página Inicial")
             main_page(tts)
+
+        elif intent == "SELECT":
+            print("Selecionar")
+            select(tts)
+
+        elif intent == "REMOVE":
+            print("Remover")
+            remove(tts)
     
         else:
             print(f"Intent não reconhecido: {intent}")

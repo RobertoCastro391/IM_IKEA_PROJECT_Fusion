@@ -172,23 +172,13 @@ nlu:
 
   - intent: remove_favorites
     examples: |
-      - Quero remover dos favotiros o produto número [1](position)
-      - Remove o produto número [2](position) dos favoritos
-      - Elimina o produto na posição [3](position) dos favoritos
-      - Eu quero eliminar o item número [4](position) dos favoritos
-      - Selecione o item [5](position) e elimina dos favoritos
-      - Produto número [7](position) fora dos favoritos
-      - Remove o item [8](position) dos favoritos
+      - Elimina dos favoritos
+      - Remove dos favoritos
   
   - intent: remove_cart
     examples: |
-      - Quero remover do carrinho o produto número [1](position)
-      - Remove o produto número [2](position) do carrinho
-      - Elimina o produto na posição [3](position) do carrinho
-      - Eu quero eliminar o item número [4](position) do carrinho
-      - Selecione o item [5](position) e elimina do carrinho
-      - Produto número [7](position) fora do carrinho
-      - Remove o item [8](position) do carrinho
+      - Elimina do carrinho
+      - Remove do carrinho
   
   - intent: go_back
     examples: |
